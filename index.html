@@ -1,0 +1,116 @@
+<!DOCTYPE html><html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eagles Club | إحصائيات الفريق</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#07111f;color:white}
+header{background:#10243a;padding:28px 15px;text-align:center;border-bottom:3px solid #168cff}
+header h1{margin:0;color:#39a5ff;font-size:32px}
+header p{color:#c5d7e8}
+.container{max-width:950px;margin:auto;padding:20px}
+h2{color:#42a5ff}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.card{background:#12243a;padding:20px;border-radius:14px;text-align:center;border:1px solid #263e59}
+.number{font-size:30px;color:#42a5ff;font-weight:bold;margin:10px}
+label{display:block;margin:12px 0 6px}
+input,select,button{width:100%;padding:12px;border-radius:8px;border:1px solid #344d68;font-size:16px}
+input,select{background:#0b1929;color:white}
+button{background:#168cff;color:white;border:0;font-weight:bold;cursor:pointer;margin-top:12px}
+button:hover{background:#0874d1}
+.panel{background:#102035;padding:18px;border-radius:12px;margin-top:20px}
+table{width:100%;border-collapse:collapse;margin-top:12px}
+th,td{padding:10px;border-bottom:1px solid #34465b;text-align:center}
+th{color:#42a5ff}
+.delete{background:#b72f3c;padding:7px;margin:0}
+footer{text-align:center;color:#93a8bd;padding:25px}
+@media(max-width:500px){.stats{grid-template-columns:1fr}.container{padding:12px}header h1{font-size:27px}}
+</style>
+</head>
+<body>
+<header>
+<h1>🦅 EAGLES CLUB</h1>
+<p>الموقع الرسمي لإحصائيات الفريق</p>
+</header>
+<main class="container">
+<h2>📊 إحصائيات الفريق</h2>
+<div class="stats">
+<div class="card">عدد اللاعبين<div class="number" id="playersCount">0</div></div>
+<div class="card">عدد المباريات<div class="number" id="matchesCount">0</div></div>
+<div class="card">إجمالي الأهداف<div class="number" id="goalsCount">0</div></div>
+<div class="card">عدد الانتصارات<div class="number" id="winsCount">0</div></div>
+</div><section class="panel">
+<h2>⚽ إضافة لاعب</h2>
+<label for="playerName">اسم اللاعب</label>
+<input id="playerName" placeholder="اكتب اسم اللاعب">
+<label for="playerNumber">رقم القميص</label>
+<input id="playerNumber" type="number" min="1" placeholder="رقم اللاعب">
+<label for="playerGoals">الأهداف</label>
+<input id="playerGoals" type="number" min="0" value="0">
+<button onclick="addPlayer()">إضافة اللاعب</button>
+<table>
+<thead><tr><th>اللاعب</th><th>الرقم</th><th>الأهداف</th><th>حذف</th></tr></thead>
+<tbody id="playersTable"></tbody>
+</table>
+</section><section class="panel">
+<h2>🏆 تسجيل مباراة</h2>
+<label for="opponent">اسم الفريق المنافس</label>
+<input id="opponent" placeholder="اسم الفريق المنافس">
+<label for="ourScore">أهداف Eagles Club</label>
+<input id="ourScore" type="number" min="0" value="0">
+<label for="theirScore">أهداف المنافس</label>
+<input id="theirScore" type="number" min="0" value="0">
+<button onclick="addMatch()">حفظ نتيجة المباراة</button>
+<table>
+<thead><tr><th>المنافس</th><th>النتيجة</th><th>النتيجة النهائية</th><th>حذف</th></tr></thead>
+<tbody id="matchesTable"></tbody>
+</table>
+</section>
+</main>
+<footer>🦅 EAGLES CLUB © 2026 | معًا نحو الفوز</footer>
+<script>
+let players=JSON.parse(localStorage.getItem('eaglesPlayers')||'[]');
+let matches=JSON.parse(localStorage.getItem('eaglesMatches')||'[]');
+function save(){
+localStorage.setItem('eaglesPlayers',JSON.stringify(players));
+localStorage.setItem('eaglesMatches',JSON.stringify(matches));
+render();
+}
+function addPlayer(){
+let name=document.getElementById('playerName').value.trim();
+let number=document.getElementById('playerNumber').value;
+let goals=Number(document.getElementById('playerGoals').value);
+if(!name||number===''||Number(number)<1||goals<0){alert('أدخل بيانات اللاعب بشكل صحيح');return}
+players.push({name,number,goals});
+document.getElementById('playerName').value='';
+document.getElementById('playerNumber').value='';
+document.getElementById('playerGoals').value=0;
+save();
+}
+function addMatch(){
+let opponent=document.getElementById('opponent').value.trim();
+let ours=document.getElementById('ourScore').value;
+let theirs=document.getElementById('theirScore').value;
+if(!opponent||ours===''||theirs===''||Number(ours)<0||Number(theirs)<0){alert('أدخل بيانات المباراة بشكل صحيح');return}
+matches.push({opponent,ours:Number(ours),theirs:Number(theirs)});
+document.getElementById('opponent').value='';
+document.getElementById('ourScore').value=0;
+document.getElementById('theirScore').value=0;
+save();
+}
+function removePlayer(i){players.splice(i,1);save()}
+function removeMatch(i){matches.splice(i,1);save()}
+function render(){
+document.getElementById('playersCount').textContent=players.length;
+document.getElementById('matchesCount').textContent=matches.length;
+document.getElementById('goalsCount').textContent=players.reduce((s,p)=>s+Number(p.goals),0);
+document.getElementById('winsCount').textContent=matches.filter(m=>m.ours>m.theirs).length;
+document.getElementById('playersTable').innerHTML=players.map((p,i)=>`<tr><td>${escapeText(p.name)}</td><td>${p.number}</td><td>${p.goals}</td><td><button class="delete" onclick="removePlayer(${i})">حذف</button></td></tr>`).join('');
+document.getElementById('matchesTable').innerHTML=matches.map((m,i)=>`<tr><td>${escapeText(m.opponent)}</td><td>${m.ours} - ${m.theirs}</td><td>${m.ours>m.theirs?'فوز':m.ours===m.theirs?'تعادل':'خسارة'}</td><td><button class="delete" onclick="removeMatch(${i})">حذف</button></td></tr>`).join('');
+}
+function escapeText(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+render();
+</script>
+</body>
+  </html>
