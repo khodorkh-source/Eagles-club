@@ -2,583 +2,371 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eagles Club | نادي النسور</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#07111f">
+<title>Eagles Club | إحصائيات النادي</title>
 
 <style>
 :root {
-  --bg: #07111f;
-  --panel: #101e31;
-  --panel2: #162840;
-  --blue: #2588ff;
-  --gold: #ffd166;
-  --white: #f4f7ff;
-  --muted: #9aacc4;
-  --border: #243954;
-  --green: #35d49a;
-  --red: #ff647c;
+  --bg:#07111f;
+  --panel:#101e31;
+  --panel2:#162943;
+  --blue:#2588ff;
+  --gold:#ffd166;
+  --white:#f5f8ff;
+  --muted:#9aacc4;
+  --border:#263b56;
+  --green:#35d49a;
+  --red:#ff647c;
 }
 
-* {
-  box-sizing: border-box;
-}
+* {box-sizing:border-box}
 
 body {
-  margin: 0;
-  background:
-    radial-gradient(ellipse at top, #122b4c 0%, var(--bg) 48%);
-  color: var(--white);
-  font-family: Arial, Tahoma, sans-serif;
+  margin:0;
+  background:radial-gradient(ellipse at top,#142b49,var(--bg) 55%);
+  color:var(--white);
+  font-family:Arial,Tahoma,sans-serif;
 }
 
-button, input, select {
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
-}
-
-.container {
-  width: min(1100px, 94%);
-  margin: auto;
-}
+button,input,select {font:inherit}
+button {cursor:pointer}
+.container {width:min(1150px,94%);margin:auto}
 
 header {
-  padding: 24px 0;
-  border-bottom: 1px solid var(--border);
-  background: rgba(7, 17, 31, .8);
+  background:#081321ed;
+  border-bottom:1px solid var(--border);
+  padding:18px 0;
+  position:sticky;
+  top:0;
+  z-index:10;
+  backdrop-filter:blur(12px);
 }
 
-.header-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
+.header-row {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
 }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
+.brand {display:flex;align-items:center;gap:10px}
 
 .logo {
-  width: 58px;
-  height: 58px;
-  display: grid;
-  place-items: center;
-  border-radius: 17px;
-  font-size: 32px;
-  background: linear-gradient(135deg, #2588ff, #1743a0);
-  box-shadow: 0 8px 30px #2588ff35;
+  width:48px;height:48px;
+  display:grid;place-items:center;
+  border-radius:14px;
+  background:linear-gradient(135deg,#2588ff,#173b85);
+  font-size:29px;
 }
 
-.brand h1 {
-  margin: 0;
-  font-size: 23px;
-  letter-spacing: 1px;
+.brand h1 {font-size:19px;margin:0}
+.brand p {font-size:11px;color:var(--muted);margin:5px 0 0}
+
+.online {
+  background:#173b32;
+  color:#7af0bd;
+  padding:8px 10px;
+  border-radius:20px;
+  font-size:11px;
 }
 
-.brand p {
-  margin: 6px 0 0;
-  color: var(--muted);
-  font-size: 12px;
+nav {
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding:14px 0 2px;
+  scrollbar-width:thin;
 }
 
-.badge {
-  border: 1px solid #345277;
-  background: #142641;
-  padding: 9px 13px;
-  border-radius: 12px;
-  color: #b9d9ff;
-  font-size: 12px;
+nav button {
+  flex-shrink:0;
+  border:1px solid var(--border);
+  background:#112139;
+  color:#c4d3e7;
+  padding:11px 14px;
+  border-radius:11px;
+  font-size:12px;
 }
 
-.hero {
-  padding: 36px 0 22px;
+nav button.active {
+  background:var(--blue);
+  border-color:var(--blue);
+  color:white;
 }
+
+main {padding-bottom:35px}
+
+.page {display:none;padding-top:25px}
+.page.active {display:block}
+
+.hero {padding:15px 0 25px}
 
 .eyebrow {
-  color: var(--gold);
-  font-size: 12px;
-  font-weight: bold;
-  letter-spacing: 2px;
+  color:var(--gold);
+  font-size:11px;
+  font-weight:bold;
+  letter-spacing:2px;
 }
 
 .hero h2 {
-  font-size: clamp(28px, 6vw, 43px);
-  margin: 12px 0;
-  line-height: 1.3;
+  font-size:clamp(28px,6vw,43px);
+  line-height:1.4;
+  margin:12px 0;
 }
 
-.hero h2 span {
-  color: var(--blue);
-}
+.hero h2 span {color:var(--blue)}
 
-.hero p {
-  color: var(--muted);
-  line-height: 1.8;
-  max-width: 620px;
-  font-size: 14px;
-}
+.muted {color:var(--muted);line-height:1.8;font-size:13px}
 
 .stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  margin: 22px 0 32px;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+  margin:20px 0 30px;
 }
 
 .stat {
-  background: linear-gradient(145deg, var(--panel2), var(--panel));
-  border: 1px solid var(--border);
-  border-radius: 17px;
-  padding: 18px 12px;
-  min-width: 0;
+  background:linear-gradient(145deg,var(--panel2),var(--panel));
+  border:1px solid var(--border);
+  padding:17px 12px;
+  border-radius:17px;
+  min-width:0;
 }
 
-.stat-icon {
-  font-size: 22px;
+.stat-icon {font-size:22px}
+.stat h3 {font-size:27px;margin:11px 0 5px}
+.stat p {font-size:11px;color:var(--muted);margin:0}
+
+.heading {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-bottom:17px;
 }
 
-.stat h3 {
-  font-size: 26px;
-  margin: 12px 0 5px;
-}
+.heading h2 {font-size:21px;margin:0}
+.heading p {font-size:12px;color:var(--muted);margin:7px 0 0}
 
-.stat p {
-  color: var(--muted);
-  margin: 0;
-  font-size: 12px;
-}
-
-.section {
-  margin: 32px 0;
-}
-
-.section-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 18px;
-}
-
-.section-heading h2 {
-  margin: 0;
-  font-size: 21px;
-}
-
-.section-heading p {
-  color: var(--muted);
-  font-size: 12px;
-  margin: 7px 0 0;
-}
+.section {margin:27px 0}
 
 .panel {
-  background: linear-gradient(145deg, #122239, #0d192a);
-  border: 1px solid var(--border);
-  border-radius: 19px;
-  padding: 20px;
+  padding:19px;
+  border-radius:19px;
+  border:1px solid var(--border);
+  background:linear-gradient(145deg,#122239,#0d192a);
 }
 
 .champion {
-  position: relative;
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: 1fr 220px;
-  align-items: center;
-  gap: 20px;
-  padding: 25px;
-  border: 1px solid #987b3c;
-  border-radius: 24px;
+  display:grid;
+  grid-template-columns:1fr 190px;
+  align-items:center;
+  gap:20px;
+  padding:24px;
+  border:1px solid #9a7937;
+  border-radius:23px;
   background:
-    radial-gradient(circle at 80% 15%, #ffd16625, transparent 45%),
-    linear-gradient(135deg, #292719, #131e2d 70%);
+    radial-gradient(circle at 80% 10%,#ffd1662a,transparent 50%),
+    linear-gradient(140deg,#30291a,#111e30);
+  overflow:hidden;
 }
 
-.champion-info {
-  position: relative;
-  z-index: 1;
+.champ-label {
+  color:var(--gold);
+  background:#ffd16618;
+  border:1px solid #ffd16666;
+  padding:8px 12px;
+  border-radius:30px;
+  font-size:11px;
+  display:inline-block;
 }
 
-.champion-label {
-  display: inline-block;
-  background: #ffd1661c;
-  color: var(--gold);
-  border: 1px solid #ffd16665;
-  border-radius: 30px;
-  padding: 8px 12px;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.champion h3 {
-  font-size: clamp(25px, 5vw, 36px);
-  margin: 17px 0 9px;
-  overflow-wrap: anywhere;
-}
-
-.champion p {
-  color: #c2cddd;
-  margin: 0;
-  font-size: 13px;
-}
-
-.champion-number {
-  color: var(--gold);
-  font-size: 14px;
-  margin-top: 12px;
-}
-
-.champion-goals {
-  font-size: 35px;
-  font-weight: bold;
-  margin-top: 17px;
-}
-
-.champion-goals small {
-  font-size: 13px;
-  color: var(--muted);
-}
-
-.champion-photo-wrap {
-  position: relative;
-  width: 100%;
-  max-width: 220px;
-  justify-self: center;
-}
+.champion h3 {font-size:clamp(25px,5vw,36px);margin:17px 0 8px}
+.champion .big-number {font-size:37px;font-weight:bold;color:var(--gold);margin-top:16px}
+.champion .big-number small {font-size:12px;color:var(--muted)}
 
 .champion-photo {
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  border-radius: 19px;
-  border: 3px solid var(--gold);
-  background: #172941;
-  display: block;
+  width:100%;
+  aspect-ratio:4/5;
+  object-fit:cover;
+  border:3px solid var(--gold);
+  border-radius:18px;
+  background:#1a2b43;
 }
 
-.crown {
-  position: absolute;
-  top: -15px;
-  right: -10px;
-  font-size: 38px;
-  filter: drop-shadow(0 4px 8px #0008);
+.crown {font-size:27px}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
 }
 
-.player-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-  margin-top: 17px;
+.card {
+  min-width:0;
+  overflow:hidden;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:17px;
 }
 
-.player-card {
-  min-width: 0;
-  overflow: hidden;
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 18px;
+.card-photo {
+  display:block;
+  width:100%;
+  height:175px;
+  object-fit:cover;
+  background:#1a2b43;
 }
 
-.player-photo {
-  width: 100%;
-  height: 175px;
-  object-fit: cover;
-  display: block;
-  background: #1a2b43;
+.card-body {padding:13px}
+.rank {
+  display:inline-block;
+  background:#223751;
+  padding:6px 9px;
+  border-radius:8px;
+  font-size:11px;
+  color:#d7e7ff;
 }
 
-.player-content {
-  padding: 14px;
+.rank.first {background:#59461d;color:#ffe29a}
+.rank.second {background:#34445a;color:#e2e8f0}
+.rank.third {background:#533c2c;color:#f4c9a0}
+
+.card h3 {font-size:16px;margin:12px 0 7px;overflow-wrap:anywhere}
+.card p {font-size:11px;color:var(--muted);margin:0 0 12px}
+
+.numbers {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
 }
 
-.player-rank {
-  display: inline-block;
-  color: #c8d9f0;
-  background: #223751;
-  padding: 5px 9px;
-  border-radius: 8px;
-  font-size: 11px;
+.number-box {
+  background:#091625;
+  border-radius:10px;
+  padding:10px 6px;
+  text-align:center;
 }
 
-.player-content h3 {
-  margin: 12px 0 7px;
-  font-size: 17px;
-  overflow-wrap: anywhere;
+.number-box strong {display:block;font-size:19px}
+.number-box span {font-size:10px;color:var(--muted);display:block;margin-top:5px}
+
+.actions {display:flex;gap:7px;margin-top:12px}
+.actions button {
+  flex:1;min-width:0;
+  border:1px solid var(--border);
+  background:#20334d;color:white;
+  border-radius:9px;padding:9px 3px;font-size:11px;
+}
+.actions .danger {background:#371c2b;color:#ff9aaa}
+
+.btn {
+  border:0;
+  border-radius:11px;
+  padding:12px 15px;
+  color:white;
+  background:linear-gradient(100deg,#1475ed,#3b9aff);
+  font-weight:bold;
 }
 
-.player-content p {
-  color: var(--muted);
-  font-size: 12px;
-  margin: 0 0 13px;
-}
-
-.player-numbers {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-}
-
-.player-numbers div {
-  background: #0b1727;
-  padding: 10px 7px;
-  border-radius: 10px;
-}
-
-.player-numbers strong {
-  display: block;
-  font-size: 19px;
-}
-
-.player-numbers span {
-  display: block;
-  color: var(--muted);
-  font-size: 10px;
-  margin-top: 5px;
-}
-
-.card-actions {
-  display: flex;
-  gap: 7px;
-  margin-top: 12px;
-}
-
-.card-actions button {
-  flex: 1;
-  min-width: 0;
-  border: 1px solid var(--border);
-  border-radius: 9px;
-  padding: 9px 4px;
-  color: white;
-  background: #20334d;
-  font-size: 11px;
-}
-
-.card-actions .delete {
-  color: #ff9aaa;
-  background: #371c2b;
-  border-color: #623043;
-}
-
-.empty {
-  text-align: center;
-  color: var(--muted);
-  padding: 32px 10px;
-  line-height: 1.9;
-}
+.btn.secondary {background:#20334d;border:1px solid var(--border)}
+.btn.danger {background:#512236}
 
 .form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
 }
 
-.field {
-  min-width: 0;
+.field {min-width:0}
+.field.full {grid-column:1/-1}
+
+.field label {display:block;font-size:13px;margin-bottom:8px;color:#cfdaeb}
+
+.field input,.field select {
+  width:100%;min-width:0;
+  padding:13px;
+  border:1px solid #30445e;
+  border-radius:10px;
+  color:white;background:#081525;
+  outline:none;
 }
 
-.field.full {
-  grid-column: 1 / -1;
+.field input:focus,.field select:focus {border-color:var(--blue)}
+
+.field input[type=file] {font-size:12px}
+
+.form-note {font-size:11px;color:var(--muted);line-height:1.8}
+
+.empty {
+  text-align:center;
+  color:var(--muted);
+  padding:30px 12px;
+  line-height:2;
 }
 
-.field label {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 13px;
-  color: #cbd9eb;
-}
+.table-wrap {overflow-x:auto}
 
-.field input,
-.field select {
-  width: 100%;
-  min-width: 0;
-  background: #081525;
-  border: 1px solid #30445e;
-  border-radius: 11px;
-  padding: 13px;
-  color: white;
-  outline: none;
-}
+table {width:100%;border-collapse:collapse;min-width:470px}
+th,td {padding:13px 10px;text-align:center;border-bottom:1px solid var(--border);font-size:12px}
+th {color:#a9cfff;background:#15263c}
+td {color:#e1eafa}
+td img {width:40px;height:40px;object-fit:cover;border-radius:50%;vertical-align:middle}
+td .person {display:flex;align-items:center;gap:9px;text-align:right}
 
-.field input:focus,
-.field select:focus {
-  border-color: var(--blue);
-}
-
-.primary-btn {
-  width: 100%;
-  border: 0;
-  border-radius: 12px;
-  padding: 14px;
-  color: white;
-  font-weight: bold;
-  background: linear-gradient(100deg, #1475ed, #3b9aff);
-}
-
-.secondary-btn {
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 10px 14px;
-  color: white;
-  background: #1b2e47;
-}
-
-.message {
-  margin-top: 12px;
-  color: var(--green);
-  font-size: 13px;
-}
-
-.matches {
-  display: grid;
-  gap: 11px;
-}
+.match-list {display:grid;gap:11px}
 
 .match {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 10px;
-  padding: 16px 12px;
-  border-radius: 14px;
-  background: #14243a;
-  border: 1px solid var(--border);
-  text-align: center;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  gap:8px;
+  text-align:center;
+  background:#14243a;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:15px 10px;
 }
 
-.match-team {
-  overflow-wrap: anywhere;
-  font-size: 13px;
-}
-
-.match-score {
-  font-size: 23px;
-  font-weight: bold;
-}
-
-.match-date {
-  display: block;
-  color: var(--muted);
-  font-size: 10px;
-  margin-top: 6px;
-}
-
-.result-win {
-  color: var(--green);
-}
-
-.result-loss {
-  color: var(--red);
-}
-
-.result-draw {
-  color: var(--gold);
-}
-
-.match-delete {
-  grid-column: 1 / -1;
-  border: 1px solid #623043;
-  background: #371c2b;
-  color: #ff9aaa;
-  border-radius: 8px;
-  padding: 8px;
-}
+.match-team {font-size:12px;overflow-wrap:anywhere}
+.match-score {font-size:24px;font-weight:bold}
+.match-date {display:block;color:var(--muted);font-size:10px;margin-top:6px}
+.win {color:var(--green)}
+.loss {color:var(--red)}
+.draw {color:var(--gold)}
+.match button {grid-column:1/-1}
 
 footer {
-  text-align: center;
-  color: var(--muted);
-  padding: 35px 10px;
-  font-size: 12px;
-  border-top: 1px solid var(--border);
-  margin-top: 40px;
+  text-align:center;
+  border-top:1px solid var(--border);
+  padding:25px 10px;
+  color:var(--muted);
+  font-size:12px;
 }
 
-footer strong {
-  color: #8fc4ff;
+footer strong {color:#8fc4ff}
+
+@media(max-width:650px) {
+  .brand h1 {font-size:16px}
+  .brand p {font-size:10px}
+  .logo {width:43px;height:43px}
+  .stats {grid-template-columns:repeat(2,minmax(0,1fr))}
+  .champion {grid-template-columns:1fr 115px;padding:16px;gap:12px}
+  .champion h3 {font-size:23px}
+  .champion-photo {border-radius:13px}
+  .champion .big-number {font-size:29px}
+  .grid {grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .card-photo {height:140px}
+  .card-body {padding:10px}
+  .card h3 {font-size:14px}
+  .panel {padding:14px}
 }
 
-@media (max-width: 650px) {
-  .brand h1 {
-    font-size: 17px;
-  }
-
-  .logo {
-    width: 48px;
-    height: 48px;
-  }
-
-  .badge {
-    font-size: 10px;
-    padding: 8px;
-  }
-
-  .stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .champion {
-    grid-template-columns: 1fr 125px;
-    gap: 12px;
-    padding: 17px;
-  }
-
-  .champion-photo-wrap {
-    max-width: 125px;
-  }
-
-  .champion h3 {
-    font-size: 23px;
-  }
-
-  .champion-goals {
-    font-size: 27px;
-  }
-
-  .player-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-  }
-
-  .player-photo {
-    height: 140px;
-  }
-
-  .player-content {
-    padding: 10px;
-  }
-
-  .player-content h3 {
-    font-size: 15px;
-  }
-
-  .panel {
-    padding: 14px;
-  }
-}
-
-@media (max-width: 360px) {
-  .champion {
-    grid-template-columns: 1fr 100px;
-  }
-
-  .champion-photo-wrap {
-    max-width: 100px;
-  }
-
-  .player-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .field.full {
-    grid-column: auto;
-  }
+@media(max-width:360px) {
+  .grid {grid-template-columns:1fr}
+  .form-grid {grid-template-columns:1fr}
+  .field.full {grid-column:auto}
 }
 </style>
 </head>
@@ -586,215 +374,221 @@ footer strong {
 <body>
 
 <header>
-  <div class="container header-inner">
-    <div class="brand">
-      <div class="logo">🦅</div>
-      <div>
-        <h1>EAGLES CLUB</h1>
-        <p>نادي النسور لكرة القدم</p>
+  <div class="container">
+    <div class="header-row">
+      <div class="brand">
+        <div class="logo">🦅</div>
+        <div>
+          <h1>EAGLES CLUB</h1>
+          <p>نادي النسور لكرة القدم</p>
+        </div>
       </div>
+      <span class="online">⚽ إحصائيات النادي</span>
     </div>
-    <div class="badge">⚽ لوحة الفريق</div>
+
+    <nav id="navigation">
+      <button class="active" data-page="home">🏠 الرئيسية</button>
+      <button data-page="players">👥 اللاعبون</button>
+      <button data-page="scorers">🥇 الهدافون</button>
+      <button data-page="assists">🎯 صناعة الأهداف</button>
+      <button data-page="ratings">⭐ التقييمات</button>
+      <button data-page="forwards">⚽ المهاجمون</button>
+      <button data-page="defenders">🛡️ المدافعون</button>
+      <button data-page="goalkeepers">🧤 الحراس</button>
+      <button data-page="matches">🏆 المباريات</button>
+      <button data-page="manage">➕ إدارة البيانات</button>
+    </nav>
   </div>
 </header>
 
 <main class="container">
 
-  <section class="hero">
-    <div class="eyebrow">THE HOME OF EAGLES</div>
-    <h2>الأرقام تصنع التاريخ.<br><span>والنسور يصنعون المجد.</span></h2>
-    <p>
-      المنصة الرسمية لإحصائيات Eagles Club.
-      تابع اللاعبين والهدافين ونتائج المباريات وترتيب النجوم.
-    </p>
-  </section>
-
-  <section class="stats">
-    <div class="stat">
-      <div class="stat-icon">👥</div>
-      <h3 id="totalPlayers">0</h3>
-      <p>عدد اللاعبين</p>
-    </div>
-    <div class="stat">
-      <div class="stat-icon">⚽</div>
-      <h3 id="totalGoals">0</h3>
-      <p>مجموع الأهداف</p>
-    </div>
-    <div class="stat">
-      <div class="stat-icon">🏟️</div>
-      <h3 id="totalMatches">0</h3>
-      <p>عدد المباريات</p>
-    </div>
-    <div class="stat">
-      <div class="stat-icon">🏆</div>
-      <h3 id="totalWins">0</h3>
-      <p>عدد الانتصارات</p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="section-heading">
-      <div>
-        <h2>👑 نجم الفريق</h2>
-        <p>صاحب المركز الأول في ترتيب الهدافين</p>
-      </div>
-    </div>
-    <div id="championArea"></div>
-  </section>
-
-  <section class="section">
-    <div class="section-heading">
-      <div>
-        <h2>🥇 ترتيب الهدافين</h2>
-        <p>الترتيب يتحدث تلقائيًا حسب عدد الأهداف</p>
-      </div>
-      <button class="secondary-btn" onclick="showPlayerForm()">
-        + لاعب جديد
-      </button>
-    </div>
-    <div id="playerGrid" class="player-grid"></div>
-  </section>
-
-  <section class="section" id="playerFormSection" hidden>
-    <div class="section-heading">
-      <div>
-        <h2 id="playerFormTitle">➕ إضافة لاعب</h2>
-        <p>أدخل معلومات اللاعب وصورته</p>
-      </div>
-    </div>
-
-    <form id="playerForm" class="panel">
-      <div class="form-grid">
-
-        <div class="field">
-          <label for="playerName">اسم اللاعب</label>
-          <input id="playerName" maxlength="60" required
-                 placeholder="مثال: أحمد محمد">
-        </div>
-
-        <div class="field">
-          <label for="playerNumber">رقم القميص</label>
-          <input id="playerNumber" type="number" min="0" max="999"
-                 required placeholder="مثال: 10">
-        </div>
-
-        <div class="field">
-          <label for="playerGoals">عدد الأهداف</label>
-          <input id="playerGoals" type="number" min="0" max="99999"
-                 value="0" required>
-        </div>
-
-        <div class="field">
-          <label for="playerAppearances">عدد المشاركات</label>
-          <input id="playerAppearances" type="number" min="0"
-                 max="99999" value="0" required>
-        </div>
-
-        <div class="field full">
-          <label for="playerPhoto">صورة اللاعب من هاتفك</label>
-          <input id="playerPhoto" type="file"
-                 accept="image/jpeg,image/png,image/webp">
-          <small style="display:block;color:#9aacc4;margin-top:7px">
-            اختر صورة واضحة للاعب. سيتم تصغيرها لتقليل حجم التخزين.
-          </small>
-        </div>
-
-        <div class="field full">
-          <button type="submit" class="primary-btn" id="savePlayerBtn">
-            حفظ اللاعب
-          </button>
-          <button type="button" class="secondary-btn"
-                  style="width:100%;margin-top:9px"
-                  onclick="cancelPlayerEdit()">
-            إلغاء
-          </button>
-          <div id="playerMessage" class="message"></div>
-        </div>
-
-      </div>
-    </form>
-  </section>
-
-  <section class="section">
-    <div class="section-heading">
-      <div>
-        <h2>📋 سجل المباريات</h2>
-        <p>سجّل النتائج وتابع انتصارات الفريق</p>
-      </div>
-    </div>
-
-    <form id="matchForm" class="panel" style="margin-bottom:17px">
-      <div class="form-grid">
-
-        <div class="field full">
-          <label for="opponent">اسم الفريق المنافس</label>
-          <input id="opponent" maxlength="60" required
-                 placeholder="مثال: Lions FC">
-        </div>
-
-        <div class="field">
-          <label for="ourScore">أهداف Eagles Club</label>
-          <input id="ourScore" type="number" min="0" max="999"
-                 required placeholder="0">
-        </div>
-
-        <div class="field">
-          <label for="theirScore">أهداف الفريق المنافس</label>
-          <input id="theirScore" type="number" min="0" max="999"
-                 required placeholder="0">
-        </div>
-
-        <div class="field full">
-          <label for="matchDate">تاريخ المباراة</label>
-          <input id="matchDate" type="date" required>
-        </div>
-
-        <div class="field full">
-          <button type="submit" class="primary-btn">
-            + تسجيل المباراة
-          </button>
-          <div id="matchMessage" class="message"></div>
-        </div>
-
-      </div>
-    </form>
-
-    <div id="matchList" class="matches"></div>
-  </section>
-
-  <section class="section">
-    <div class="section-heading">
-      <div>
-        <h2>💾 إدارة البيانات</h2>
-        <p>احتفظ بنسخة احتياطية من بيانات الفريق</p>
-      </div>
-    </div>
-
-    <div class="panel">
-      <p style="color:#c5d2e3;line-height:1.9;font-size:13px">
-        بيانات اللاعبين والمباريات تُحفظ في المتصفح على هذا الجهاز.
-        يمكنك تنزيل نسخة احتياطية واستيرادها لاحقًا.
+  <section id="home" class="page active">
+    <div class="hero">
+      <div class="eyebrow">THE HOME OF EAGLES</div>
+      <h2>النسور تصنع المجد<br><span>والأرقام تروي الحكاية.</span></h2>
+      <p class="muted">
+        منصة Eagles Club لإحصائيات اللاعبين وترتيب الهدافين
+        وصناعة الأهداف وتقييمات النجوم ونتائج المباريات.
       </p>
+    </div>
 
-      <button class="primary-btn" onclick="exportData()">
-        تنزيل نسخة احتياطية
-      </button>
+    <div class="stats">
+      <div class="stat"><div class="stat-icon">👥</div><h3 id="statPlayers">0</h3><p>اللاعبون</p></div>
+      <div class="stat"><div class="stat-icon">⚽</div><h3 id="statGoals">0</h3><p>الأهداف</p></div>
+      <div class="stat"><div class="stat-icon">🏟️</div><h3 id="statMatches">0</h3><p>المباريات</p></div>
+      <div class="stat"><div class="stat-icon">🏆</div><h3 id="statWins">0</h3><p>الانتصارات</p></div>
+    </div>
 
-      <div class="field" style="margin-top:14px">
-        <label for="importFile">استيراد نسخة احتياطية</label>
-        <input id="importFile" type="file" accept=".json,application/json">
+    <div class="section">
+      <div class="heading"><div><h2>👑 نجم الهدافين</h2><p>صاحب المركز الأول</p></div></div>
+      <div id="homeChampion"></div>
+    </div>
+
+    <div class="section">
+      <div class="heading"><div><h2>⭐ الأعلى تقييمًا</h2><p>أفضل تقييم مسجل للاعبين</p></div></div>
+      <div id="homeRated" class="grid"></div>
+    </div>
+  </section>
+
+  <section id="players" class="page">
+    <div class="heading"><div><h2>👥 جميع اللاعبين</h2><p>قائمة لاعبي Eagles Club</p></div></div>
+    <div id="allPlayers" class="grid"></div>
+  </section>
+
+  <section id="scorers" class="page">
+    <div class="heading"><div><h2>🥇 ترتيب الهدافين</h2><p>المركز الأول يظهر بحجم كبير</p></div></div>
+    <div id="scorerChampion"></div>
+    <div id="scorerGrid" class="grid section"></div>
+  </section>
+
+  <section id="assists" class="page">
+    <div class="heading"><div><h2>🎯 صُنّاع الأهداف</h2><p>الترتيب حسب التمريرات الحاسمة</p></div></div>
+    <div id="assistChampion"></div>
+    <div id="assistGrid" class="grid section"></div>
+  </section>
+
+  <section id="ratings" class="page">
+    <div class="heading"><div><h2>⭐ تقييمات اللاعبين</h2><p>من 1 إلى 10، حسب تقييم الإدارة</p></div></div>
+    <div id="ratingChampion"></div>
+    <div id="ratingGrid" class="grid section"></div>
+  </section>
+
+  <section id="forwards" class="page">
+    <div class="heading"><div><h2>⚽ أفضل المهاجمين</h2><p>ترتيب المهاجمين حسب الأهداف</p></div></div>
+    <div id="forwardChampion"></div>
+    <div id="forwardGrid" class="grid section"></div>
+  </section>
+
+  <section id="defenders" class="page">
+    <div class="heading"><div><h2>🛡️ أفضل المدافعين</h2><p>ترتيب المدافعين حسب التقييم</p></div></div>
+    <div id="defenderChampion"></div>
+    <div id="defenderGrid" class="grid section"></div>
+  </section>
+
+  <section id="goalkeepers" class="page">
+    <div class="heading"><div><h2>🧤 أفضل حراس المرمى</h2><p>ترتيب الحراس حسب التقييم</p></div></div>
+    <div id="keeperChampion"></div>
+    <div id="keeperGrid" class="grid section"></div>
+  </section>
+
+  <section id="matches" class="page">
+    <div class="heading"><div><h2>🏆 سجل المباريات</h2><p>نتائج Eagles Club</p></div></div>
+    <div id="matchList" class="match-list"></div>
+  </section>
+
+  <section id="manage" class="page">
+    <div class="section">
+      <div class="heading"><div><h2 id="formTitle">➕ إضافة لاعب جديد</h2><p>أدخل معلومات اللاعب</p></div></div>
+
+      <form id="playerForm" class="panel">
+        <div class="form-grid">
+
+          <div class="field">
+            <label for="name">اسم اللاعب</label>
+            <input id="name" required maxlength="60" placeholder="اسم اللاعب">
+          </div>
+
+          <div class="field">
+            <label for="number">رقم القميص</label>
+            <input id="number" type="number" min="0" max="999" required placeholder="رقم القميص">
+          </div>
+
+          <div class="field">
+            <label for="position">مركز اللاعب</label>
+            <select id="position" required>
+              <option value="مهاجم">مهاجم</option>
+              <option value="وسط">لاعب وسط</option>
+              <option value="مدافع">مدافع</option>
+              <option value="حارس">حارس مرمى</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="goals">الأهداف</label>
+            <input id="goals" type="number" min="0" max="99999" value="0" required>
+          </div>
+
+          <div class="field">
+            <label for="assists">صناعة الأهداف</label>
+            <input id="assists" type="number" min="0" max="99999" value="0" required>
+          </div>
+
+          <div class="field">
+            <label for="appearances">المشاركات</label>
+            <input id="appearances" type="number" min="0" max="99999" value="0" required>
+          </div>
+
+          <div class="field">
+            <label for="rating">التقييم من 10</label>
+            <input id="rating" type="number" min="1" max="10" step="0.1" value="5" required>
+          </div>
+
+          <div class="field">
+            <label for="cleanSheets">الشباك النظيفة للحارس</label>
+            <input id="cleanSheets" type="number" min="0" max="99999" value="0" required>
+          </div>
+
+          <div class="field full">
+            <label for="photo">صورة اللاعب</label>
+            <input id="photo" type="file" accept="image/*">
+            <p class="form-note">اختر صورة من هاتفك. إذا عدّلت لاعبًا ولم تختر صورة جديدة، تبقى صورته السابقة.</p>
+          </div>
+
+          <div class="field full">
+            <button class="btn" id="savePlayer" type="submit">حفظ اللاعب</button>
+            <button class="btn secondary" id="cancelEdit" type="button" style="display:none;width:100%;margin-top:9px" onclick="cancelEdit()">إلغاء التعديل</button>
+            <p id="playerMessage" class="form-note"></p>
+          </div>
+
+        </div>
+      </form>
+    </div>
+
+    <div class="section">
+      <div class="heading"><div><h2>⚽ تسجيل مباراة</h2><p>أضف نتيجة جديدة إلى سجل النادي</p></div></div>
+
+      <form id="matchForm" class="panel">
+        <div class="form-grid">
+          <div class="field full">
+            <label for="opponent">الفريق المنافس</label>
+            <input id="opponent" required maxlength="60" placeholder="اسم الفريق المنافس">
+          </div>
+
+          <div class="field">
+            <label for="ourScore">أهداف Eagles Club</label>
+            <input id="ourScore" type="number" min="0" max="999" required>
+          </div>
+
+          <div class="field">
+            <label for="theirScore">أهداف المنافس</label>
+            <input id="theirScore" type="number" min="0" max="999" required>
+          </div>
+
+          <div class="field full">
+            <label for="matchDate">تاريخ المباراة</label>
+            <input id="matchDate" type="date" required>
+          </div>
+
+          <div class="field full">
+            <button class="btn" type="submit">حفظ المباراة</button>
+            <p id="matchMessage" class="form-note"></p>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="section">
+      <div class="heading"><div><h2>💾 النسخ الاحتياطي</h2><p>احتفظ بنسخة من بياناتك</p></div></div>
+      <div class="panel">
+        <button class="btn" style="width:100%" onclick="exportData()">تنزيل نسخة احتياطية</button>
+        <div class="field" style="margin-top:15px">
+          <label for="importFile">استيراد نسخة محفوظة</label>
+          <input id="importFile" type="file" accept=".json,application/json">
+        </div>
+        <button class="btn danger" style="width:100%;margin-top:15px" onclick="resetData()">حذف جميع البيانات</button>
+        <p class="form-note">البيانات والصور تُحفظ في هذا المتصفح فقط، ولا تظهر تلقائيًا على أجهزة الآخرين. نزّل نسخة احتياطية بانتظام.</p>
       </div>
-
-      <button class="secondary-btn"
-              style="width:100%;margin-top:12px"
-              onclick="resetAllData()">
-        حذف جميع البيانات
-      </button>
-
-      <p style="color:#9aacc4;font-size:11px;line-height:1.8">
-        تنبيه: البيانات المحفوظة على جهازك لا تنتقل تلقائيًا إلى أجهزة
-        اللاعبين الآخرين. لا تحذف بياناتك إلا إذا كنت متأكدًا.
-      </p>
     </div>
   </section>
 
@@ -806,517 +600,381 @@ footer strong {
 </footer>
 
 <script>
-const STORAGE_KEY = "eaglesClubDataV2";
+const KEY = "eaglesClubProV1";
 
 let players = [];
 let matches = [];
-let editingPlayerId = null;
+let editingId = null;
 let pendingPhoto = "";
 
-function makeId() {
-  return Date.now().toString(36) +
-    Math.random().toString(36).slice(2, 8);
+function id() {
+  return Date.now().toString(36) + Math.random().toString(36).slice(2,8);
 }
 
-function loadData() {
+function load() {
   try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-
-    if (saved) {
-      const data = JSON.parse(saved);
-      players = Array.isArray(data.players) ? data.players : [];
-      matches = Array.isArray(data.matches) ? data.matches : [];
-    }
-  } catch (error) {
+    const data = JSON.parse(localStorage.getItem(KEY) || "{}");
+    players = Array.isArray(data.players) ? data.players : [];
+    matches = Array.isArray(data.matches) ? data.matches : [];
+  } catch(e) {
     players = [];
     matches = [];
   }
 }
 
-function saveData() {
+function save() {
   try {
-    localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify({ players, matches })
-    );
+    localStorage.setItem(KEY, JSON.stringify({players,matches}));
     return true;
-  } catch (error) {
-    alert(
-      "تعذر حفظ البيانات. قد تكون مساحة التخزين ممتلئة. " +
-      "نزّل نسخة احتياطية أو استخدم صورًا أصغر."
-    );
+  } catch(e) {
+    alert("تعذر حفظ البيانات. نزّل نسخة احتياطية أو استخدم صورًا أصغر.");
     return false;
   }
 }
 
-function escapeHTML(value) {
-  return String(value ?? "").replace(/[&<>"']/g, char => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;"
-  })[char]);
+function esc(s) {
+  return String(s ?? "").replace(/[&<>"']/g,c=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  })[c]);
 }
 
-function placeholderPhoto() {
-  const svg = `
-    <svg xmlns="http://www.w3.org/2000/svg" width="400" height="500">
-      <defs>
-        <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-          <stop stop-color="#2588ff"/>
-          <stop offset="1" stop-color="#101e31"/>
-        </linearGradient>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#g)"/>
-      <text x="50%" y="45%" text-anchor="middle"
-        font-size="110">🦅</text>
-      <text x="50%" y="65%" text-anchor="middle"
-        fill="white" font-size="29" font-family="Arial">EAGLES CLUB</text>
-    </svg>`;
-  return "data:image/svg+xml;charset=UTF-8," +
-    encodeURIComponent(svg);
+function placeholder() {
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500">
+  <defs><linearGradient id="g"><stop stop-color="#2588ff"/><stop offset="1" stop-color="#101e31"/></linearGradient></defs>
+  <rect width="100%" height="100%" fill="url(#g)"/>
+  <text x="50%" y="45%" text-anchor="middle" font-size="110">🦅</text>
+  <text x="50%" y="65%" text-anchor="middle" fill="white" font-size="29" font-family="Arial">EAGLES CLUB</text>
+  </svg>`;
+  return "data:image/svg+xml;charset=UTF-8,"+encodeURIComponent(svg);
 }
 
-function sortedPlayers() {
-  return [...players].sort((a, b) =>
-    Number(b.goals) - Number(a.goals) ||
-    Number(b.appearances) - Number(a.appearances) ||
-    a.name.localeCompare(b.name, "ar")
+function sortBy(key, list=players) {
+  return [...list].sort((a,b)=>
+    Number(b[key]||0)-Number(a[key]||0) ||
+    Number(b.goals||0)-Number(a.goals||0)
   );
 }
 
-function render() {
-  const ordered = sortedPlayers();
-
-  document.getElementById("totalPlayers").textContent =
-    players.length;
-
-  document.getElementById("totalGoals").textContent =
-    players.reduce((sum, p) => sum + Number(p.goals || 0), 0);
-
-  document.getElementById("totalMatches").textContent =
-    matches.length;
-
-  document.getElementById("totalWins").textContent =
-    matches.filter(m => Number(m.ourScore) > Number(m.theirScore)).length;
-
-  renderChampion(ordered);
-  renderPlayers(ordered);
-  renderMatches();
+function rankClass(i) {
+  return i===0 ? "first" : i===1 ? "second" : i===2 ? "third" : "";
 }
 
-function renderChampion(ordered) {
-  const area = document.getElementById("championArea");
-
-  if (!ordered.length) {
-    area.innerHTML = `
-      <div class="panel empty">
-        <div style="font-size:45px">🏆</div>
-        <strong>مكان النجم الأول بانتظار بطلكم!</strong>
-        <p>أضف اللاعبين وستظهر صورة الهداف الأول هنا بحجم كبير.</p>
-        <button class="primary-btn" style="margin-top:10px"
-          onclick="showPlayerForm()">إضافة أول لاعب</button>
-      </div>`;
-    return;
-  }
-
-  const p = ordered[0];
-
-  area.innerHTML = `
-    <div class="champion">
-      <div class="champion-info">
-        <span class="champion-label">👑 TOP SCORER · المركز الأول</span>
-        <h3>${escapeHTML(p.name)}</h3>
-        <p>نجم Eagles Club وصاحب صدارة الهدافين</p>
-        <div class="champion-number">
-          رقم القميص #${escapeHTML(p.number)}
-        </div>
-        <div class="champion-goals">
-          ${Number(p.goals || 0)}
-          <small>هدفًا</small>
-        </div>
-        <p style="margin-top:10px">
-          المشاركات: ${Number(p.appearances || 0)}
-        </p>
-      </div>
-      <div class="champion-photo-wrap">
-        <span class="crown">👑</span>
-        <img class="champion-photo"
-          src="${p.photo || placeholderPhoto()}"
-          alt="${escapeHTML(p.name)}">
-      </div>
-    </div>`;
+function rankName(i) {
+  return ["🥇 المركز الأول","🥈 المركز الثاني","🥉 المركز الثالث"][i] || `المركز ${i+1}`;
 }
 
-function renderPlayers(ordered) {
-  const grid = document.getElementById("playerGrid");
+function championHTML(p, label, statKey, statLabel) {
+  if(!p) return `<div class="panel empty">لا يوجد لاعبون هنا حتى الآن.<br>أضف اللاعبين من صفحة إدارة البيانات.</div>`;
 
-  if (!ordered.length) {
-    grid.innerHTML = `
-      <div class="panel empty" style="grid-column:1/-1">
-        لا يوجد لاعبون حتى الآن. أضف أول لاعب لبدء الترتيب.
-      </div>`;
-    return;
-  }
+  return `<div class="champion">
+    <div>
+      <span class="champ-label">👑 ${esc(label)} · المركز الأول</span>
+      <h3>${esc(p.name)}</h3>
+      <p class="muted">${esc(p.position)} · رقم القميص #${esc(p.number)}</p>
+      <div class="big-number">${Number(p[statKey]||0)} <small>${esc(statLabel)}</small></div>
+      <p class="muted">⭐ التقييم: ${Number(p.rating||0).toFixed(1)} / 10</p>
+      <p class="muted">⚽ الأهداف: ${Number(p.goals||0)} · 🎯 الصناعة: ${Number(p.assists||0)}</p>
+    </div>
+    <div>
+      <div style="font-size:28px;margin-bottom:7px">👑</div>
+      <img class="champion-photo" src="${p.photo||placeholder()}" alt="${esc(p.name)}">
+    </div>
+  </div>`;
+}
 
-  grid.innerHTML = ordered.map((p, index) => {
-    const rank = index + 1;
-    let rankLabel = `المركز ${rank}`;
+function cardHTML(p,i,statKey,statLabel) {
+  return `<article class="card">
+    <img class="card-photo" src="${p.photo||placeholder()}" alt="${esc(p.name)}">
+    <div class="card-body">
+      <span class="rank ${rankClass(i)}">${rankName(i)}</span>
+      <h3>${esc(p.name)}</h3>
+      <p>${esc(p.position)} · رقم القميص #${esc(p.number)}</p>
+      <div class="numbers">
+        <div class="number-box"><strong>${Number(p[statKey]||0)}</strong><span>${esc(statLabel)}</span></div>
+        <div class="number-box"><strong>${Number(p.rating||0).toFixed(1)}</strong><span>التقييم / 10</span></div>
+        <div class="number-box"><strong>${Number(p.goals||0)}</strong><span>الأهداف</span></div>
+        <div class="number-box"><strong>${Number(p.assists||0)}</strong><span>صناعة الأهداف</span></div>
+      </div>
+      <div class="actions">
+        <button onclick="editPlayer('${p.id}')">✏️ تعديل</button>
+        <button class="danger" onclick="deletePlayer('${p.id}')">حذف</button>
+      </div>
+    </div>
+  </article>`;
+}
 
-    if (rank === 1) rankLabel = "🥇 المركز الأول";
-    if (rank === 2) rankLabel = "🥈 المركز الثاني";
-    if (rank === 3) rankLabel = "🥉 المركز الثالث";
+function renderRanking(champId,gridId,list,label,key,statLabel) {
+  document.getElementById(champId).innerHTML =
+    championHTML(list[0],label,key,statLabel);
+  document.getElementById(gridId).innerHTML =
+    list.length ? list.map((p,i)=>cardHTML(p,i,key,statLabel)).join("") :
+    `<div class="panel empty" style="grid-column:1/-1">لا يوجد لاعبون حتى الآن.</div>`;
+}
 
-    return `
-      <article class="player-card">
-        <img class="player-photo"
-          src="${p.photo || placeholderPhoto()}"
-          alt="${escapeHTML(p.name)}">
-
-        <div class="player-content">
-          <span class="player-rank">${rankLabel}</span>
-          <h3>${escapeHTML(p.name)}</h3>
-          <p>رقم القميص #${escapeHTML(p.number)}</p>
-
-          <div class="player-numbers">
-            <div>
-              <strong>${Number(p.goals || 0)}</strong>
-              <span>الأهداف</span>
-            </div>
-            <div>
-              <strong>${Number(p.appearances || 0)}</strong>
-              <span>المشاركات</span>
-            </div>
-          </div>
-
-          <div class="card-actions">
-            <button onclick="editPlayer('${p.id}')">✏️ تعديل</button>
-            <button class="delete"
-              onclick="deletePlayer('${p.id}')">حذف</button>
-          </div>
-        </div>
-      </article>`;
-  }).join("");
+function renderPlayers() {
+  const grid = document.getElementById("allPlayers");
+  grid.innerHTML = players.length ?
+    players.map((p,i)=>cardHTML(p,i,"goals","الأهداف")).join("") :
+    `<div class="panel empty" style="grid-column:1/-1">أضف أول لاعب من صفحة إدارة البيانات.</div>`;
 }
 
 function renderMatches() {
   const list = document.getElementById("matchList");
 
-  if (!matches.length) {
-    list.innerHTML = `
-      <div class="panel empty">
-        لم تُسجّل أي مباراة بعد.
-      </div>`;
+  if(!matches.length) {
+    list.innerHTML = `<div class="panel empty">لا توجد مباريات مسجلة حتى الآن.</div>`;
     return;
   }
 
-  list.innerHTML = [...matches]
-    .sort((a, b) => String(b.date).localeCompare(String(a.date)))
-    .map(m => {
-      const our = Number(m.ourScore);
-      const their = Number(m.theirScore);
+  list.innerHTML = [...matches].sort((a,b)=>b.date.localeCompare(a.date)).map(m=>{
+    const a=Number(m.ourScore),b=Number(m.theirScore);
+    const result=a>b?"فوز":a<b?"خسارة":"تعادل";
+    const cls=a>b?"win":a<b?"loss":"draw";
 
-      let result = "تعادل";
-      let resultClass = "result-draw";
-
-      if (our > their) {
-        result = "فوز";
-        resultClass = "result-win";
-      } else if (our < their) {
-        result = "خسارة";
-        resultClass = "result-loss";
-      }
-
-      return `
-        <div class="match">
-          <div class="match-team">
-            <strong>Eagles Club</strong>
-            <span class="match-date">${escapeHTML(m.date)}</span>
-          </div>
-
-          <div>
-            <div class="match-score">
-              ${our} - ${their}
-            </div>
-            <div class="${resultClass}" style="font-size:12px;margin-top:6px">
-              ${result}
-            </div>
-          </div>
-
-          <div class="match-team">
-            <strong>${escapeHTML(m.opponent)}</strong>
-          </div>
-
-          <button class="match-delete"
-            onclick="deleteMatch('${m.id}')">
-            حذف هذه المباراة
-          </button>
-        </div>`;
-    }).join("");
+    return `<div class="match">
+      <div class="match-team"><strong>Eagles Club</strong><span class="match-date">${esc(m.date)}</span></div>
+      <div><div class="match-score">${a} - ${b}</div><div class="${cls}" style="font-size:12px;margin-top:5px">${result}</div></div>
+      <div class="match-team"><strong>${esc(m.opponent)}</strong></div>
+      <button class="btn secondary" onclick="deleteMatch('${m.id}')">حذف المباراة</button>
+    </div>`;
+  }).join("");
 }
 
-function showPlayerForm() {
-  document.getElementById("playerFormSection").hidden = false;
-  document.getElementById("playerFormSection").scrollIntoView({
-    behavior: "smooth",
-    block: "start"
-  });
+function render() {
+  const orderedGoals=sortBy("goals");
+  const orderedAssists=sortBy("assists");
+  const orderedRatings=sortBy("rating");
+  const forwards=sortBy("goals",players.filter(p=>p.position==="مهاجم"));
+  const defenders=sortBy("rating",players.filter(p=>p.position==="مدافع"));
+  const keepers=sortBy("rating",players.filter(p=>p.position==="حارس"));
+
+  document.getElementById("statPlayers").textContent=players.length;
+  document.getElementById("statGoals").textContent=players.reduce((s,p)=>s+Number(p.goals||0),0);
+  document.getElementById("statMatches").textContent=matches.length;
+  document.getElementById("statWins").textContent=matches.filter(m=>Number(m.ourScore)>Number(m.theirScore)).length;
+
+  document.getElementById("homeChampion").innerHTML=championHTML(orderedGoals[0],"نجم الهدافين","goals","هدفًا");
+  document.getElementById("homeRated").innerHTML=orderedRatings.length ?
+    orderedRatings.slice(0,3).map((p,i)=>cardHTML(p,i,"rating","التقييم")).join("") :
+    `<div class="panel empty" style="grid-column:1/-1">أضف اللاعبين لعرض التقييمات.</div>`;
+
+  renderPlayers();
+  renderRanking("scorerChampion","scorerGrid",orderedGoals,"الهداف الأول","goals","هدفًا");
+  renderRanking("assistChampion","assistGrid",orderedAssists,"أفضل صانع أهداف","assists","تمريرة حاسمة");
+  renderRanking("ratingChampion","ratingGrid",orderedRatings,"الأعلى تقييمًا","rating","من 10");
+  renderRanking("forwardChampion","forwardGrid",forwards,"أفضل مهاجم","goals","هدفًا");
+  renderRanking("defenderChampion","defenderGrid",defenders,"أفضل مدافع","rating","من 10");
+  renderRanking("keeperChampion","keeperGrid",keepers,"أفضل حارس","rating","من 10");
+  renderMatches();
 }
 
-function cancelPlayerEdit() {
-  editingPlayerId = null;
-  pendingPhoto = "";
+document.getElementById("navigation").addEventListener("click",e=>{
+  const button=e.target.closest("button[data-page]");
+  if(!button) return;
+
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  document.getElementById(button.dataset.page).classList.add("active");
+
+  document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
+  button.classList.add("active");
+  window.scrollTo({top:0,behavior:"smooth"});
+});
+
+function showPage(page) {
+  document.querySelector(`nav button[data-page="${page}"]`).click();
+}
+
+function cancelEdit() {
+  editingId=null;
+  pendingPhoto="";
   document.getElementById("playerForm").reset();
-  document.getElementById("playerGoals").value = 0;
-  document.getElementById("playerAppearances").value = 0;
-  document.getElementById("playerFormTitle").textContent = "➕ إضافة لاعب";
-  document.getElementById("savePlayerBtn").textContent = "حفظ اللاعب";
-  document.getElementById("playerMessage").textContent = "";
-  document.getElementById("playerFormSection").hidden = true;
+  document.getElementById("goals").value=0;
+  document.getElementById("assists").value=0;
+  document.getElementById("appearances").value=0;
+  document.getElementById("rating").value=5;
+  document.getElementById("cleanSheets").value=0;
+  document.getElementById("formTitle").textContent="➕ إضافة لاعب جديد";
+  document.getElementById("savePlayer").textContent="حفظ اللاعب";
+  document.getElementById("cancelEdit").style.display="none";
+  document.getElementById("playerMessage").textContent="";
 }
 
-function editPlayer(id) {
-  const p = players.find(item => item.id === id);
-  if (!p) return;
+function editPlayer(playerId) {
+  const p=players.find(x=>x.id===playerId);
+  if(!p) return;
 
-  editingPlayerId = id;
-  pendingPhoto = p.photo || "";
+  editingId=playerId;
+  pendingPhoto=p.photo||"";
 
-  document.getElementById("playerName").value = p.name;
-  document.getElementById("playerNumber").value = p.number;
-  document.getElementById("playerGoals").value = p.goals;
-  document.getElementById("playerAppearances").value = p.appearances;
-  document.getElementById("playerPhoto").value = "";
+  document.getElementById("name").value=p.name;
+  document.getElementById("number").value=p.number;
+  document.getElementById("position").value=p.position;
+  document.getElementById("goals").value=p.goals;
+  document.getElementById("assists").value=p.assists;
+  document.getElementById("appearances").value=p.appearances;
+  document.getElementById("rating").value=p.rating;
+  document.getElementById("cleanSheets").value=p.cleanSheets||0;
+  document.getElementById("photo").value="";
 
-  document.getElementById("playerFormTitle").textContent = "✏️ تعديل اللاعب";
-  document.getElementById("savePlayerBtn").textContent = "حفظ التعديلات";
-  document.getElementById("playerMessage").textContent =
-    "إذا لم تختر صورة جديدة، ستبقى الصورة الحالية.";
-
-  showPlayerForm();
+  document.getElementById("formTitle").textContent="✏️ تعديل بيانات اللاعب";
+  document.getElementById("savePlayer").textContent="حفظ التعديلات";
+  document.getElementById("cancelEdit").style.display="block";
+  showPage("manage");
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 
-function deletePlayer(id) {
-  const p = players.find(item => item.id === id);
-  if (!p) return;
+function deletePlayer(playerId) {
+  const p=players.find(x=>x.id===playerId);
+  if(!p||!confirm("هل تريد حذف اللاعب "+p.name+"؟")) return;
 
-  if (!confirm(`هل تريد حذف اللاعب ${p.name}؟`)) return;
-
-  players = players.filter(item => item.id !== id);
-
-  if (saveData()) render();
+  players=players.filter(x=>x.id!==playerId);
+  if(save()) render();
 }
 
 function compressImage(file) {
-  return new Promise((resolve, reject) => {
-    if (!file.type.startsWith("image/")) {
-      reject(new Error("الملف ليس صورة."));
+  return new Promise((resolve,reject)=>{
+    if(!file.type.startsWith("image/")) {
+      reject(new Error("اختر ملف صورة صحيحًا."));
       return;
     }
 
-    const reader = new FileReader();
-
-    reader.onerror = () => reject(new Error("تعذرت قراءة الصورة."));
-
-    reader.onload = () => {
-      const img = new Image();
-
-      img.onerror = () => reject(new Error("تعذر فتح الصورة."));
-
-      img.onload = () => {
-        const maxSize = 400;
-        const scale = Math.min(
-          1,
-          maxSize / Math.max(img.width, img.height)
-        );
-
-        const canvas = document.createElement("canvas");
-        canvas.width = Math.max(1, Math.round(img.width * scale));
-        canvas.height = Math.max(1, Math.round(img.height * scale));
-
-        const ctx = canvas.getContext("2d");
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-        resolve(canvas.toDataURL("image/jpeg", 0.72));
+    const reader=new FileReader();
+    reader.onerror=()=>reject(new Error("تعذرت قراءة الصورة."));
+    reader.onload=()=>{
+      const img=new Image();
+      img.onerror=()=>reject(new Error("تعذر فتح الصورة."));
+      img.onload=()=>{
+        const scale=Math.min(1,400/Math.max(img.width,img.height));
+        const canvas=document.createElement("canvas");
+        canvas.width=Math.max(1,Math.round(img.width*scale));
+        canvas.height=Math.max(1,Math.round(img.height*scale));
+        canvas.getContext("2d").drawImage(img,0,0,canvas.width,canvas.height);
+        resolve(canvas.toDataURL("image/jpeg",0.7));
       };
-
-      img.src = reader.result;
+      img.src=reader.result;
     };
-
     reader.readAsDataURL(file);
   });
 }
 
-document.getElementById("playerPhoto").addEventListener(
-  "change",
-  async function() {
-    const file = this.files[0];
-    if (!file) return;
+document.getElementById("photo").addEventListener("change",async function(){
+  const file=this.files[0];
+  if(!file) return;
 
-    const message = document.getElementById("playerMessage");
-    message.style.color = "#35d49a";
-    message.textContent = "جارٍ تجهيز الصورة...";
+  const msg=document.getElementById("playerMessage");
+  msg.textContent="جارٍ تجهيز الصورة...";
 
-    try {
-      pendingPhoto = await compressImage(file);
-      message.textContent = "تم تجهيز الصورة بنجاح.";
-    } catch (error) {
-      message.style.color = "#ff647c";
-      message.textContent = error.message;
-    }
+  try {
+    pendingPhoto=await compressImage(file);
+    msg.textContent="تم تجهيز الصورة.";
+  } catch(error) {
+    msg.textContent=error.message;
   }
-);
+});
 
-document.getElementById("playerForm").addEventListener(
-  "submit",
-  async function(event) {
-    event.preventDefault();
+document.getElementById("playerForm").addEventListener("submit",e=>{
+  e.preventDefault();
 
-    const name = document.getElementById("playerName").value.trim();
-    const number = Number(document.getElementById("playerNumber").value);
-    const goals = Number(document.getElementById("playerGoals").value);
-    const appearances = Number(
-      document.getElementById("playerAppearances").value
-    );
+  const old=players.find(p=>p.id===editingId);
+  const p={
+    id:editingId||id(),
+    name:document.getElementById("name").value.trim(),
+    number:Number(document.getElementById("number").value),
+    position:document.getElementById("position").value,
+    goals:Number(document.getElementById("goals").value),
+    assists:Number(document.getElementById("assists").value),
+    appearances:Number(document.getElementById("appearances").value),
+    rating:Number(document.getElementById("rating").value),
+    cleanSheets:Number(document.getElementById("cleanSheets").value),
+    photo:pendingPhoto||(old?old.photo:"")
+  };
 
-    if (!name) {
-      alert("اكتب اسم اللاعب.");
-      return;
-    }
-
-    const oldPlayer = players.find(p => p.id === editingPlayerId);
-
-    const player = {
-      id: editingPlayerId || makeId(),
-      name,
-      number,
-      goals,
-      appearances,
-      photo: pendingPhoto || (oldPlayer ? oldPlayer.photo : "")
-    };
-
-    if (editingPlayerId) {
-      players = players.map(p => p.id === editingPlayerId ? player : p);
-    } else {
-      players.push(player);
-    }
-
-    if (saveData()) {
-      render();
-      cancelPlayerEdit();
-      alert("تم حفظ اللاعب بنجاح! 🦅");
-    }
+  if(!p.name) {
+    alert("أدخل اسم اللاعب.");
+    return;
   }
-);
 
-document.getElementById("matchDate").value =
-  new Date().toLocaleDateString("en-CA");
+  if(editingId) players=players.map(x=>x.id===editingId?p:x);
+  else players.push(p);
 
-document.getElementById("matchForm").addEventListener(
-  "submit",
-  function(event) {
-    event.preventDefault();
-
-    const opponent = document.getElementById("opponent").value.trim();
-    const ourScore = Number(document.getElementById("ourScore").value);
-    const theirScore = Number(document.getElementById("theirScore").value);
-    const date = document.getElementById("matchDate").value;
-
-    if (!opponent || !date) {
-      alert("أكمل معلومات المباراة.");
-      return;
-    }
-
-    matches.push({
-      id: makeId(),
-      opponent,
-      ourScore,
-      theirScore,
-      date
-    });
-
-    if (saveData()) {
-      render();
-      this.reset();
-      document.getElementById("matchDate").value =
-        new Date().toLocaleDateString("en-CA");
-      document.getElementById("matchMessage").textContent =
-        "تم تسجيل المباراة بنجاح!";
-    }
+  if(save()) {
+    render();
+    cancelEdit();
+    alert("تم حفظ بيانات اللاعب بنجاح! 🦅");
+    showPage("players");
   }
-);
+});
 
-function deleteMatch(id) {
-  if (!confirm("هل تريد حذف هذه المباراة؟")) return;
+document.getElementById("matchDate").value=new Date().toLocaleDateString("en-CA");
 
-  matches = matches.filter(m => m.id !== id);
+document.getElementById("matchForm").addEventListener("submit",e=>{
+  e.preventDefault();
 
-  if (saveData()) render();
+  matches.push({
+    id:id(),
+    opponent:document.getElementById("opponent").value.trim(),
+    ourScore:Number(document.getElementById("ourScore").value),
+    theirScore:Number(document.getElementById("theirScore").value),
+    date:document.getElementById("matchDate").value
+  });
+
+  if(save()) {
+    render();
+    e.target.reset();
+    document.getElementById("matchDate").value=new Date().toLocaleDateString("en-CA");
+    document.getElementById("matchMessage").textContent="تم تسجيل المباراة بنجاح!";
+  }
+});
+
+function deleteMatch(matchId) {
+  if(!confirm("هل تريد حذف المباراة؟")) return;
+  matches=matches.filter(m=>m.id!==matchId);
+  if(save()) render();
 }
 
 function exportData() {
-  const data = JSON.stringify({ players, matches }, null, 2);
-  const blob = new Blob([data], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = "eagles-club-backup.json";
-  link.click();
-
+  const blob=new Blob([JSON.stringify({players,matches},null,2)],{type:"application/json"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url;
+  a.download="eagles-club-backup.json";
+  a.click();
   URL.revokeObjectURL(url);
 }
 
-document.getElementById("importFile").addEventListener(
-  "change",
-  async function() {
-    const file = this.files[0];
-    if (!file) return;
+document.getElementById("importFile").addEventListener("change",async function(){
+  const file=this.files[0];
+  if(!file) return;
 
-    try {
-      const data = JSON.parse(await file.text());
+  try {
+    const data=JSON.parse(await file.text());
+    if(!Array.isArray(data.players)||!Array.isArray(data.matches)) throw new Error();
 
-      if (!Array.isArray(data.players) || !Array.isArray(data.matches)) {
-        throw new Error("صيغة النسخة الاحتياطية غير صحيحة.");
-      }
+    if(!confirm("سيتم استبدال البيانات الحالية. هل تريد المتابعة؟")) return;
 
-      if (!confirm("سيتم استبدال البيانات الحالية. هل تريد المتابعة؟")) {
-        this.value = "";
-        return;
-      }
-
-      players = data.players;
-      matches = data.matches;
-
-      if (saveData()) {
-        render();
-        alert("تم استيراد البيانات بنجاح.");
-      }
-    } catch (error) {
-      alert("تعذر استيراد الملف. تأكد أنه نسخة احتياطية صحيحة.");
+    players=data.players;
+    matches=data.matches;
+    if(save()) {
+      render();
+      alert("تم استيراد البيانات بنجاح.");
     }
-
-    this.value = "";
-  }
-);
-
-function resetAllData() {
-  if (!confirm("تحذير: سيتم حذف جميع اللاعبين والمباريات من هذا المتصفح. هل أنت متأكد؟")) {
-    return;
+  } catch(e) {
+    alert("تعذر قراءة النسخة الاحتياطية.");
   }
 
-  if (!confirm("تأكيد أخير: هل تريد حذف كل البيانات نهائيًا؟")) {
-    return;
-  }
+  this.value="";
+});
 
-  players = [];
-  matches = [];
+function resetData() {
+  if(!confirm("هل تريد حذف جميع اللاعبين والمباريات؟")) return;
+  if(!confirm("تأكيد أخير: هذا الحذف لا يمكن التراجع عنه إلا إذا لديك نسخة احتياطية.")) return;
 
-  if (saveData()) render();
+  players=[];
+  matches=[];
+  if(save()) render();
 }
 
-loadData();
+load();
 render();
 </script>
 
