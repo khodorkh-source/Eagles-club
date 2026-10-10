@@ -9,19 +9,17 @@
 :root {
   --bg: #07111f;
   --panel: #101f33;
-  --panel2: #162a43;
+  --panel2: #172d48;
   --blue: #1688ff;
   --light: #53b5ff;
   --text: #f4f8ff;
   --muted: #9aafc9;
-  --border: #243b57;
+  --border: #263e5b;
   --green: #25d69a;
   --red: #ff5d70;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -30,17 +28,12 @@ body {
   font-family: Arial, Tahoma, sans-serif;
 }
 
-button, input, select {
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
-}
+button, input, select { font: inherit; }
+button { cursor: pointer; }
 
 header {
-  padding: 24px 16px;
-  background: linear-gradient(120deg, #102c4e, #07111f);
+  padding: 22px 15px;
+  background: linear-gradient(120deg, #143a63, #07111f);
   border-bottom: 1px solid var(--border);
 }
 
@@ -48,9 +41,9 @@ header {
   max-width: 1100px;
   margin: auto;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 15px;
+  justify-content: space-between;
+  gap: 12px;
 }
 
 .brand {
@@ -60,19 +53,18 @@ header {
 }
 
 .logo {
-  width: 55px;
-  height: 55px;
-  border-radius: 16px;
-  background: linear-gradient(135deg, #1688ff, #06417f);
+  width: 53px;
+  height: 53px;
   display: grid;
   place-items: center;
-  font-size: 30px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #1688ff, #06417f);
+  font-size: 29px;
 }
 
 .brand h1 {
-  font-size: 23px;
+  font-size: 22px;
   margin: 0 0 5px;
-  letter-spacing: 1px;
 }
 
 .brand p {
@@ -85,16 +77,19 @@ header {
   border: 1px solid #2465a0;
   background: #102c4e;
   color: var(--light);
-  padding: 8px 12px;
+  padding: 8px 11px;
   border-radius: 20px;
   font-size: 12px;
+  white-space: nowrap;
 }
 
+/* شريط الصفحات الأفقي */
 nav {
   max-width: 1100px;
   margin: 18px auto 0;
-  padding: 0 12px 8px;
+  padding: 0 5px 8px;
   display: flex;
+  flex-direction: row;
   flex-wrap: nowrap;
   gap: 8px;
   overflow-x: auto;
@@ -105,38 +100,30 @@ nav {
 nav button {
   flex: 0 0 auto;
   white-space: nowrap;
+  padding: 12px 16px;
   border: 1px solid var(--border);
+  border-radius: 10px;
   background: var(--panel);
   color: var(--muted);
-  padding: 12px 17px;
-  border-radius: 11px;
-  transition: .2s;
 }
 
-nav button:hover,
-nav button.active {
+nav button.active,
+nav button:hover {
   background: var(--blue);
-  border-color: var(--blue);
   color: white;
+  border-color: var(--blue);
 }
 
 main {
   max-width: 1100px;
   margin: 25px auto;
-  padding: 0 16px 40px;
+  padding: 0 15px 40px;
 }
 
-.page {
-  display: none;
-}
+.page { display: none; }
+.page.active { display: block; }
 
-.page.active {
-  display: block;
-}
-
-.page-heading {
-  margin-bottom: 22px;
-}
+.page-heading { margin-bottom: 22px; }
 
 .page-heading h2 {
   font-size: 25px;
@@ -146,6 +133,7 @@ main {
 .page-heading p {
   color: var(--muted);
   margin: 0;
+  line-height: 1.7;
   font-size: 14px;
 }
 
@@ -153,37 +141,25 @@ main {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 14px;
-  margin-bottom: 25px;
+  margin-bottom: 24px;
 }
 
 .stat-card {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 15px;
-  padding: 19px;
   min-width: 0;
+  padding: 18px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  border-radius: 15px;
 }
 
-.stat-icon {
-  font-size: 23px;
-  margin-bottom: 12px;
-}
-
-.stat-label {
-  color: var(--muted);
-  font-size: 13px;
-}
-
-.stat-number {
-  font-size: 29px;
-  font-weight: bold;
-  margin-top: 8px;
-}
+.stat-icon { font-size: 24px; margin-bottom: 12px; }
+.stat-label { font-size: 13px; color: var(--muted); }
+.stat-number { font-size: 29px; font-weight: bold; margin-top: 8px; }
 
 .panel {
   background: var(--panel);
   border: 1px solid var(--border);
-  border-radius: 17px;
+  border-radius: 16px;
   padding: 20px;
   margin-bottom: 22px;
   min-width: 0;
@@ -193,24 +169,21 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 12px;
   margin-bottom: 18px;
 }
 
-.panel-title h3 {
-  margin: 0;
-  font-size: 18px;
-}
+.panel-title h3 { margin: 0; font-size: 18px; }
 
 .top-scorer {
   display: flex;
   align-items: center;
-  gap: 25px;
+  gap: 24px;
   padding: 25px;
-  border-radius: 17px;
-  border: 1px solid #2469a8;
-  background: linear-gradient(120deg, #153f6b, #101f33 80%);
-  margin-bottom: 25px;
+  border-radius: 18px;
+  border: 1px solid #2874b8;
+  background: linear-gradient(120deg, #174879, #101f33 85%);
+  margin-bottom: 24px;
 }
 
 .top-scorer img {
@@ -223,35 +196,37 @@ main {
   border: 5px solid var(--light);
 }
 
-.top-label {
-  color: #ffcf5c;
-  font-size: 15px;
-  font-weight: bold;
-}
-
-.top-scorer h2 {
-  font-size: 31px;
-  margin: 12px 0;
-}
-
-.top-scorer p {
-  color: var(--muted);
-  margin: 8px 0 16px;
-}
+.top-label { color: #ffcf5c; font-size: 15px; font-weight: bold; }
+.top-scorer h2 { font-size: 31px; margin: 12px 0; }
+.top-scorer p { color: var(--muted); margin: 8px 0 15px; }
 
 .goal-number {
   display: inline-block;
-  background: #073b69;
-  color: #8bd0ff;
   padding: 10px 15px;
   border-radius: 10px;
-  font-weight: bold;
+  background: #073b69;
+  color: #8bd0ff;
   font-size: 18px;
+  font-weight: bold;
+}
+
+.jersey {
+  display: inline-grid;
+  place-items: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 5px;
+  border: 1px solid #347bc0;
+  border-radius: 8px;
+  background: #102c4e;
+  color: #8bd0ff;
+  font-weight: bold;
+  font-size: 13px;
 }
 
 .table-wrap {
   overflow-x: auto;
-  border-radius: 12px;
+  border-radius: 10px;
 }
 
 table {
@@ -261,7 +236,7 @@ table {
 }
 
 th, td {
-  padding: 15px 12px;
+  padding: 14px 12px;
   text-align: right;
   border-bottom: 1px solid var(--border);
 }
@@ -272,13 +247,8 @@ th {
   font-size: 13px;
 }
 
-td {
-  font-size: 14px;
-}
-
-tbody tr:hover {
-  background: #13263d;
-}
+td { font-size: 14px; }
+tbody tr:hover { background: #13263d; }
 
 .player-cell {
   display: flex;
@@ -288,8 +258,8 @@ tbody tr:hover {
 }
 
 .player-cell img {
-  width: 42px;
-  height: 42px;
+  width: 43px;
+  height: 43px;
   border-radius: 50%;
   object-fit: cover;
   background: var(--panel2);
@@ -299,13 +269,10 @@ tbody tr:hover {
 .position {
   color: var(--muted);
   font-size: 12px;
-  margin-top: 4px;
+  margin-top: 5px;
 }
 
-.rank {
-  color: #ffcf5c;
-  font-weight: bold;
-}
+.rank { color: #ffcf5c; font-weight: bold; }
 
 .btn {
   border: 0;
@@ -315,9 +282,7 @@ tbody tr:hover {
   background: var(--blue);
 }
 
-.btn:hover {
-  filter: brightness(1.12);
-}
+.btn:hover { filter: brightness(1.12); }
 
 .btn-secondary {
   background: var(--panel2);
@@ -335,11 +300,7 @@ tbody tr:hover {
   margin: 2px;
 }
 
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-}
+.actions { display: flex; flex-wrap: wrap; gap: 4px; }
 
 .form-grid {
   display: grid;
@@ -351,16 +312,15 @@ tbody tr:hover {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  min-width: 0;
 }
 
-.field label {
-  font-size: 13px;
-  color: var(--muted);
-}
+.field label { font-size: 13px; color: var(--muted); }
 
 .field input,
 .field select {
   width: 100%;
+  min-width: 0;
   padding: 12px;
   border-radius: 9px;
   border: 1px solid var(--border);
@@ -370,8 +330,29 @@ tbody tr:hover {
 }
 
 .field input:focus,
-.field select:focus {
-  border-color: var(--blue);
+.field select:focus { border-color: var(--blue); }
+
+input[type="file"] {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.preview-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+#photoPreview {
+  display: none;
+  width: 115px;
+  height: 115px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--light);
+  background: var(--panel2);
 }
 
 .form-actions {
@@ -381,26 +362,6 @@ tbody tr:hover {
   margin-top: 18px;
 }
 
-.empty {
-  color: var(--muted);
-  text-align: center;
-  padding: 28px 10px;
-}
-
-.match-score {
-  color: var(--green);
-  font-size: 18px;
-  font-weight: bold;
-}
-
-footer {
-  border-top: 1px solid var(--border);
-  padding: 22px 12px;
-  color: var(--muted);
-  text-align: center;
-  font-size: 12px;
-}
-
 .notice {
   color: var(--muted);
   font-size: 12px;
@@ -408,105 +369,53 @@ footer {
   margin-top: 14px;
 }
 
+.empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 28px 10px;
+}
+
+.match-score { color: var(--green); font-weight: bold; font-size: 18px; }
+
+footer {
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 22px 12px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
 @media (max-width: 700px) {
-  header {
-    padding: 18px 12px;
-  }
-
-  .brand h1 {
-    font-size: 18px;
-  }
-
-  .brand p {
-    font-size: 11px;
-  }
-
-  .logo {
-    width: 46px;
-    height: 46px;
-    font-size: 25px;
-  }
-
-  .badge {
-    font-size: 10px;
-    padding: 7px 9px;
-  }
-
-  nav {
-    margin-top: 15px;
-    gap: 7px;
-  }
-
-  nav button {
-    padding: 11px 14px;
-    font-size: 13px;
-  }
-
-  main {
-    margin-top: 20px;
-    padding: 0 12px 30px;
-  }
+  header { padding: 17px 12px; }
+  .brand h1 { font-size: 18px; }
+  .brand p { font-size: 11px; }
+  .logo { width: 45px; height: 45px; font-size: 25px; }
+  .badge { font-size: 10px; padding: 7px 9px; }
+  nav { margin-top: 14px; gap: 7px; }
+  nav button { padding: 11px 13px; font-size: 13px; }
+  main { margin-top: 20px; padding: 0 12px 30px; }
 
   .stats-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
   }
 
-  .stat-card {
-    padding: 15px;
-  }
+  .stat-card { padding: 14px; }
+  .stat-number { font-size: 25px; }
 
-  .stat-number {
-    font-size: 25px;
-  }
-
-  .top-scorer {
-    gap: 14px;
-    padding: 16px;
-  }
-
-  .top-scorer img {
-    width: 125px;
-    height: 125px;
-    border-width: 3px;
-  }
-
-  .top-scorer h2 {
-    font-size: 22px;
-  }
-
-  .top-label {
-    font-size: 12px;
-  }
-
-  .goal-number {
-    font-size: 14px;
-    padding: 9px;
-  }
-
-  .panel {
-    padding: 14px;
-  }
-
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
+  .top-scorer { gap: 13px; padding: 15px; }
+  .top-scorer img { width: 125px; height: 125px; border-width: 3px; }
+  .top-scorer h2 { font-size: 22px; }
+  .top-label { font-size: 12px; }
+  .goal-number { font-size: 14px; padding: 9px; }
+  .panel { padding: 14px; }
+  .form-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 380px) {
-  .top-scorer {
-    gap: 10px;
-    padding: 12px;
-  }
-
-  .top-scorer img {
-    width: 100px;
-    height: 100px;
-  }
-
-  .top-scorer h2 {
-    font-size: 19px;
-  }
+  .top-scorer { gap: 10px; padding: 12px; }
+  .top-scorer img { width: 100px; height: 100px; }
+  .top-scorer h2 { font-size: 19px; }
 }
 </style>
 </head>
@@ -539,287 +448,254 @@ footer {
 
 <main>
 
-  <!-- الصفحة الرئيسية -->
-  <section class="page active" id="home">
-    <div class="page-heading">
-      <h2>مرحباً بكم في Eagles Club</h2>
-      <p>كل إحصائيات الفريق في مكان واحد.</p>
+<section class="page active" id="home">
+  <div class="page-heading">
+    <h2>مرحباً بكم في Eagles Club</h2>
+    <p>كل إحصائيات الفريق في مكان واحد.</p>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon">👥</div>
+      <div class="stat-label">عدد اللاعبين</div>
+      <div class="stat-number" id="totalPlayers">0</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">⚽</div>
+      <div class="stat-label">مجموع الأهداف</div>
+      <div class="stat-number" id="totalGoals">0</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🎯</div>
+      <div class="stat-label">التمريرات الحاسمة</div>
+      <div class="stat-number" id="totalAssists">0</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🏟️</div>
+      <div class="stat-label">المباريات المسجلة</div>
+      <div class="stat-number" id="totalMatches">0</div>
+    </div>
+  </div>
+
+  <div id="topScorer"></div>
+
+  <div class="panel">
+    <div class="panel-title">
+      <h3>🏆 أفضل الهدافين</h3>
+      <button class="btn btn-secondary" onclick="showPage('goals')">عرض الكل</button>
+    </div>
+    <div id="homeRanking"></div>
+  </div>
+</section>
+
+<section class="page" id="players">
+  <div class="page-heading">
+    <h2>👥 قائمة اللاعبين</h2>
+    <p>أسماء اللاعبين وأرقام قمصانهم وإحصائياتهم.</p>
+  </div>
+  <div class="panel">
+    <div class="panel-title">
+      <h3>اللاعبون المسجلون</h3>
+      <button class="btn" onclick="showPage('manage')">+ إضافة لاعب</button>
+    </div>
+    <div id="playersTable"></div>
+  </div>
+</section>
+
+<section class="page" id="goals">
+  <div class="page-heading">
+    <h2>⚽ ترتيب الهدافين</h2>
+    <p>ترتيب اللاعبين حسب عدد الأهداف.</p>
+  </div>
+  <div class="panel"><div id="goalsTable"></div></div>
+</section>
+
+<section class="page" id="assists">
+  <div class="page-heading">
+    <h2>🎯 التمريرات الحاسمة</h2>
+    <p>ترتيب اللاعبين حسب التمريرات الحاسمة.</p>
+  </div>
+  <div class="panel"><div id="assistsTable"></div></div>
+</section>
+
+<section class="page" id="appearances">
+  <div class="page-heading">
+    <h2>🏟️ المشاركات</h2>
+    <p>عدد المباريات التي شارك فيها كل لاعب.</p>
+  </div>
+  <div class="panel"><div id="appearancesTable"></div></div>
+</section>
+
+<section class="page" id="ratings">
+  <div class="page-heading">
+    <h2>⭐ تقييمات اللاعبين</h2>
+    <p>التقييم من 10.</p>
+  </div>
+  <div class="panel"><div id="ratingsTable"></div></div>
+</section>
+
+<section class="page" id="matches">
+  <div class="page-heading">
+    <h2>🏆 سجل المباريات</h2>
+    <p>نتائج مباريات Eagles Club.</p>
+  </div>
+  <div class="panel">
+    <div class="panel-title">
+      <h3>المباريات المسجلة</h3>
+      <button class="btn" onclick="showPage('manage')">+ إضافة مباراة</button>
+    </div>
+    <div id="matchesTable"></div>
+  </div>
+</section>
+
+<section class="page" id="manage">
+  <div class="page-heading">
+    <h2>⚙️ إدارة الفريق</h2>
+    <p>إضافة اللاعبين والصور والأرقام وتعديل البيانات.</p>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">
+      <h3 id="playerFormTitle">إضافة لاعب جديد</h3>
     </div>
 
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-icon">👥</div>
-        <div class="stat-label">عدد اللاعبين</div>
-        <div class="stat-number" id="totalPlayers">0</div>
-      </div>
+    <form id="playerForm">
+      <input type="hidden" id="playerId">
 
-      <div class="stat-card">
-        <div class="stat-icon">⚽</div>
-        <div class="stat-label">مجموع الأهداف</div>
-        <div class="stat-number" id="totalGoals">0</div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-icon">🎯</div>
-        <div class="stat-label">التمريرات الحاسمة</div>
-        <div class="stat-number" id="totalAssists">0</div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-icon">🏟️</div>
-        <div class="stat-label">المباريات المسجلة</div>
-        <div class="stat-number" id="totalMatches">0</div>
-      </div>
-    </div>
-
-    <div id="topScorer"></div>
-
-    <div class="panel">
-      <div class="panel-title">
-        <h3>🏆 ترتيب أفضل الهدافين</h3>
-        <button class="btn btn-secondary" onclick="showPage('goals')">
-          عرض الكل
-        </button>
-      </div>
-      <div id="homeRanking"></div>
-    </div>
-  </section>
-
-  <!-- صفحة اللاعبين -->
-  <section class="page" id="players">
-    <div class="page-heading">
-      <h2>👥 قائمة اللاعبين</h2>
-      <p>جميع لاعبي Eagles Club وإحصائياتهم.</p>
-    </div>
-
-    <div class="panel">
-      <div class="panel-title">
-        <h3>اللاعبون المسجلون</h3>
-        <button class="btn" onclick="showPage('manage')">
-          + إضافة لاعب
-        </button>
-      </div>
-      <div id="playersTable"></div>
-    </div>
-  </section>
-
-  <!-- صفحة الأهداف -->
-  <section class="page" id="goals">
-    <div class="page-heading">
-      <h2>⚽ ترتيب الهدافين</h2>
-      <p>ترتيب اللاعبين حسب عدد الأهداف.</p>
-    </div>
-
-    <div class="panel">
-      <div id="goalsTable"></div>
-    </div>
-  </section>
-
-  <!-- صفحة التمريرات -->
-  <section class="page" id="assists">
-    <div class="page-heading">
-      <h2>🎯 التمريرات الحاسمة</h2>
-      <p>ترتيب اللاعبين حسب عدد التمريرات.</p>
-    </div>
-
-    <div class="panel">
-      <div id="assistsTable"></div>
-    </div>
-  </section>
-
-  <!-- صفحة المشاركات -->
-  <section class="page" id="appearances">
-    <div class="page-heading">
-      <h2>🏟️ مشاركات اللاعبين</h2>
-      <p>عدد المباريات التي شارك فيها كل لاعب.</p>
-    </div>
-
-    <div class="panel">
-      <div id="appearancesTable"></div>
-    </div>
-  </section>
-
-  <!-- صفحة التقييمات -->
-  <section class="page" id="ratings">
-    <div class="page-heading">
-      <h2>⭐ تقييمات اللاعبين</h2>
-      <p>التقييم من 10، ويمكن تعديله من إدارة الفريق.</p>
-    </div>
-
-    <div class="panel">
-      <div id="ratingsTable"></div>
-    </div>
-  </section>
-
-  <!-- صفحة المباريات -->
-  <section class="page" id="matches">
-    <div class="page-heading">
-      <h2>🏆 سجل المباريات</h2>
-      <p>نتائج المباريات المسجلة للفريق.</p>
-    </div>
-
-    <div class="panel">
-      <div class="panel-title">
-        <h3>المباريات</h3>
-        <button class="btn" onclick="showPage('manage')">
-          + إضافة مباراة
-        </button>
-      </div>
-      <div id="matchesTable"></div>
-    </div>
-  </section>
-
-  <!-- إدارة الفريق -->
-  <section class="page" id="manage">
-    <div class="page-heading">
-      <h2>⚙️ إدارة الفريق</h2>
-      <p>إضافة اللاعبين وتعديل إحصائياتهم وتسجيل المباريات.</p>
-    </div>
-
-    <div class="panel">
-      <div class="panel-title">
-        <h3 id="playerFormTitle">إضافة لاعب جديد</h3>
-      </div>
-
-      <form id="playerForm">
-        <input type="hidden" id="playerId">
-
-        <div class="form-grid">
-          <div class="field">
-            <label for="playerName">اسم اللاعب *</label>
-            <input id="playerName" required maxlength="60"
-                   placeholder="مثال: محمد علي">
-          </div>
-
-          <div class="field">
-            <label for="playerPosition">المركز</label>
-            <select id="playerPosition">
-              <option value="حارس مرمى">حارس مرمى</option>
-              <option value="مدافع">مدافع</option>
-              <option value="وسط">وسط</option>
-              <option value="مهاجم">مهاجم</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="playerGoals">الأهداف</label>
-            <input id="playerGoals" type="number" min="0" value="0" required>
-          </div>
-
-          <div class="field">
-            <label for="playerAssists">التمريرات الحاسمة</label>
-            <input id="playerAssists" type="number" min="0" value="0" required>
-          </div>
-
-          <div class="field">
-            <label for="playerAppearances">المشاركات</label>
-            <input id="playerAppearances" type="number" min="0" value="0" required>
-          </div>
-
-          <div class="field">
-            <label for="playerRating">التقييم من 10</label>
-            <input id="playerRating" type="number" min="0" max="10"
-                   step="0.1" value="5">
-          </div>
-
-          <div class="field" style="grid-column:1/-1">
-            <label for="playerPhoto">رابط صورة اللاعب</label>
-            <input id="playerPhoto" type="url"
-                   placeholder="https://example.com/player.jpg">
-          </div>
+      <div class="form-grid">
+        <div class="field">
+          <label for="playerName">اسم اللاعب *</label>
+          <input id="playerName" required maxlength="60" placeholder="اسم اللاعب">
         </div>
 
-        <div class="form-actions">
-          <button class="btn" type="submit" id="savePlayerButton">
-            حفظ اللاعب
-          </button>
-          <button class="btn btn-secondary" type="button"
-                  onclick="resetPlayerForm()">
-            إلغاء
-          </button>
+        <div class="field">
+          <label for="playerNumber">رقم القميص</label>
+          <input id="playerNumber" type="number" min="0" max="99" value="0" required>
         </div>
 
-        <p class="notice">
-          ملاحظة: استخدم رابط صورة مباشر يبدأ بـ https:// حتى تظهر الصورة.
-          الهداف الأول يتغير تلقائياً حسب عدد الأهداف.
-        </p>
-      </form>
-    </div>
+        <div class="field">
+          <label for="playerPosition">المركز</label>
+          <select id="playerPosition">
+            <option value="حارس مرمى">حارس مرمى</option>
+            <option value="مدافع">مدافع</option>
+            <option value="وسط">وسط</option>
+            <option value="مهاجم">مهاجم</option>
+          </select>
+        </div>
 
-    <div class="panel">
-      <div class="panel-title">
-        <h3>إضافة مباراة جديدة</h3>
+        <div class="field">
+          <label for="playerGoals">الأهداف</label>
+          <input id="playerGoals" type="number" min="0" value="0" required>
+        </div>
+
+        <div class="field">
+          <label for="playerAssists">التمريرات الحاسمة</label>
+          <input id="playerAssists" type="number" min="0" value="0" required>
+        </div>
+
+        <div class="field">
+          <label for="playerAppearances">المشاركات</label>
+          <input id="playerAppearances" type="number" min="0" value="0" required>
+        </div>
+
+        <div class="field">
+          <label for="playerRating">التقييم من 10</label>
+          <input id="playerRating" type="number" min="0" max="10" step="0.1" value="5" required>
+        </div>
+
+        <div class="field" style="grid-column:1/-1">
+          <label for="playerPhoto">صورة اللاعب من معرض الهاتف</label>
+          <input id="playerPhoto" type="file" accept="image/*">
+          <div class="preview-box">
+            <img id="photoPreview" alt="معاينة صورة اللاعب">
+            <span id="photoStatus" class="notice">لم يتم اختيار صورة بعد.</span>
+          </div>
+        </div>
       </div>
 
-      <form id="matchForm">
-        <div class="form-grid">
-          <div class="field">
-            <label for="matchOpponent">اسم الفريق المنافس *</label>
-            <input id="matchOpponent" required maxlength="60"
-                   placeholder="اسم الفريق">
-          </div>
-
-          <div class="field">
-            <label for="matchDate">تاريخ المباراة</label>
-            <input id="matchDate" type="date">
-          </div>
-
-          <div class="field">
-            <label for="matchOurGoals">أهداف Eagles Club</label>
-            <input id="matchOurGoals" type="number" min="0" value="0" required>
-          </div>
-
-          <div class="field">
-            <label for="matchTheirGoals">أهداف المنافس</label>
-            <input id="matchTheirGoals" type="number" min="0" value="0" required>
-          </div>
-        </div>
-
-        <div class="form-actions">
-          <button class="btn" type="submit">حفظ المباراة</button>
-        </div>
-      </form>
-    </div>
-
-    <div class="panel">
-      <div class="panel-title">
-        <h3>إدارة البيانات</h3>
+      <div class="form-actions">
+        <button class="btn" type="submit" id="savePlayerButton">حفظ اللاعب</button>
+        <button class="btn btn-secondary" type="button" onclick="resetPlayerForm()">إلغاء</button>
       </div>
 
       <p class="notice">
-        البيانات محفوظة محلياً على المتصفح الذي تستخدمه.
-        هذا الإصدار لا يزامن البيانات تلقائياً بين أجهزة مختلفة.
+        اختر الصورة مباشرةً من هاتفك. سيجري تصغيرها تلقائياً لتقليل حجمها.
+        إذا لم تختر صورة أثناء تعديل اللاعب، فستبقى صورته الحالية.
       </p>
+    </form>
+  </div>
 
-      <button class="btn btn-danger" onclick="clearAllData()">
-        حذف جميع البيانات
-      </button>
-    </div>
-  </section>
+  <div class="panel">
+    <div class="panel-title"><h3>إضافة مباراة جديدة</h3></div>
+
+    <form id="matchForm">
+      <div class="form-grid">
+        <div class="field">
+          <label for="matchOpponent">الفريق المنافس *</label>
+          <input id="matchOpponent" required maxlength="60" placeholder="اسم الفريق">
+        </div>
+
+        <div class="field">
+          <label for="matchDate">تاريخ المباراة</label>
+          <input id="matchDate" type="date">
+        </div>
+
+        <div class="field">
+          <label for="matchOurGoals">أهداف Eagles Club</label>
+          <input id="matchOurGoals" type="number" min="0" value="0" required>
+        </div>
+
+        <div class="field">
+          <label for="matchTheirGoals">أهداف المنافس</label>
+          <input id="matchTheirGoals" type="number" min="0" value="0" required>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn" type="submit">حفظ المباراة</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="panel">
+    <h3>إدارة البيانات</h3>
+    <p class="notice">
+      البيانات محفوظة على هذا المتصفح. حذف بيانات الموقع أو تغيير المتصفح
+      قد يؤدي إلى فقدانها. هذه النسخة لا تزامن البيانات تلقائياً بين الأجهزة.
+    </p>
+    <button class="btn btn-danger" onclick="clearAllData()">حذف جميع البيانات</button>
+  </div>
+</section>
 
 </main>
 
-<footer>
-  EAGLES CLUB © 2026 — نادي النسور لكرة القدم 🦅
-</footer>
+<footer>EAGLES CLUB © 2026 — نادي النسور لكرة القدم 🦅</footer>
 
 <script>
-const STORAGE_KEY = "eaglesClubFinalV1";
+const STORAGE_KEY = "eaglesClubCompleteV3";
 
 let players = [];
 let matches = [];
+let pendingPhoto = "";
+let currentPhoto = "";
 
 try {
   players = JSON.parse(localStorage.getItem(STORAGE_KEY + "_players")) || [];
   matches = JSON.parse(localStorage.getItem(STORAGE_KEY + "_matches")) || [];
-} catch (error) {
+} catch (e) {
   players = [];
   matches = [];
 }
 
 function saveData() {
-  localStorage.setItem(STORAGE_KEY + "_players", JSON.stringify(players));
-  localStorage.setItem(STORAGE_KEY + "_matches", JSON.stringify(matches));
+  try {
+    localStorage.setItem(STORAGE_KEY + "_players", JSON.stringify(players));
+    localStorage.setItem(STORAGE_KEY + "_matches", JSON.stringify(matches));
+    return true;
+  } catch (e) {
+    alert("مساحة التخزين غير كافية. جرّب صورة أصغر أو احذف بعض البيانات.");
+    return false;
+  }
 }
 
 function uid() {
@@ -827,13 +703,10 @@ function uid() {
 }
 
 function esc(value) {
-  return String(value ?? "").replace(/[&<>"']/g, char => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;"
-  }[char]));
+  return String(value ?? "").replace(/[&<>"']/g, c => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;",
+    '"': "&quot;", "'": "&#39;"
+  }[c]));
 }
 
 function num(value) {
@@ -841,29 +714,14 @@ function num(value) {
   return Number.isFinite(n) ? Math.max(0, n) : 0;
 }
 
-function photoUrl(value) {
-  const url = String(value || "").trim();
-  if (/^https?:\/\//i.test(url)) return esc(url);
-  return "";
-}
+function showPage(id) {
+  document.querySelectorAll(".page").forEach(p =>
+    p.classList.toggle("active", p.id === id)
+  );
 
-function playerPhoto(player, sizeClass = "") {
-  const url = photoUrl(player.photo);
-  const fallback = "https://placehold.co/200x200/162a43/ffffff?text=Player";
-
-  return `<img class="${sizeClass}" src="${url || fallback}"
-    alt="صورة ${esc(player.name)}"
-    onerror="this.onerror=null;this.src='${fallback}'">`;
-}
-
-function showPage(pageId) {
-  document.querySelectorAll(".page").forEach(page => {
-    page.classList.toggle("active", page.id === pageId);
-  });
-
-  document.querySelectorAll("nav button").forEach(button => {
-    button.classList.toggle("active", button.dataset.page === pageId);
-  });
+  document.querySelectorAll("nav button").forEach(b =>
+    b.classList.toggle("active", b.dataset.page === id)
+  );
 
   window.scrollTo({ top: 0, behavior: "smooth" });
   renderAll();
@@ -873,16 +731,28 @@ document.querySelectorAll("nav button").forEach(button => {
   button.addEventListener("click", () => showPage(button.dataset.page));
 });
 
-function playerCell(player) {
+function photoHTML(player) {
+  const fallback = "https://placehold.co/200x200/162a43/ffffff?text=Player";
+  const src = player.photo || fallback;
+
+  return `<img src="${esc(src)}" alt="صورة ${esc(player.name)}"
+    onerror="this.onerror=null;this.src='${fallback}'">`;
+}
+
+function playerCell(p) {
   return `
     <div class="player-cell">
-      ${playerPhoto(player)}
+      ${photoHTML(p)}
       <div>
-        <strong>${esc(player.name)}</strong>
-        <div class="position">${esc(player.position || "لاعب")}</div>
+        <strong>${esc(p.name)}</strong>
+        <div class="position">${esc(p.position || "لاعب")}</div>
       </div>
     </div>
   `;
+}
+
+function jerseyCell(p) {
+  return `<span class="jersey">${esc(p.number ?? 0)}</span>`;
 }
 
 function emptyMessage(message) {
@@ -909,30 +779,29 @@ function sortedPlayers(key) {
 function renderStats() {
   document.getElementById("totalPlayers").textContent = players.length;
   document.getElementById("totalGoals").textContent =
-    players.reduce((sum, p) => sum + num(p.goals), 0);
+    players.reduce((s, p) => s + num(p.goals), 0);
   document.getElementById("totalAssists").textContent =
-    players.reduce((sum, p) => sum + num(p.assists), 0);
+    players.reduce((s, p) => s + num(p.assists), 0);
   document.getElementById("totalMatches").textContent = matches.length;
 }
 
 function renderTopScorer() {
   const box = document.getElementById("topScorer");
-  const sorted = sortedPlayers("goals");
-  const player = sorted[0];
+  const p = sortedPlayers("goals")[0];
 
-  if (!player) {
-    box.innerHTML = emptyMessage("أضف اللاعبين لعرض صورة الهداف الأول.");
+  if (!p) {
+    box.innerHTML = emptyMessage("أضف اللاعبين لعرض الهداف الأول.");
     return;
   }
 
   box.innerHTML = `
     <div class="top-scorer">
-      ${playerPhoto(player)}
+      ${photoHTML(p)}
       <div>
         <div class="top-label">👑 الهداف الأول</div>
-        <h2>${esc(player.name)}</h2>
-        <p>${esc(player.position || "لاعب")}</p>
-        <div class="goal-number">⚽ ${num(player.goals)} هدف</div>
+        <h2>${esc(p.name)}</h2>
+        <p>${esc(p.position || "لاعب")} · رقم القميص ${esc(p.number ?? 0)}</p>
+        <div class="goal-number">⚽ ${num(p.goals)} هدف</div>
       </div>
     </div>
   `;
@@ -943,19 +812,21 @@ function renderHomeRanking() {
     <tr>
       <td class="rank">${i + 1}</td>
       <td>${playerCell(p)}</td>
+      <td>${jerseyCell(p)}</td>
       <td>${num(p.goals)}</td>
       <td>${num(p.assists)}</td>
     </tr>
   `);
 
   document.getElementById("homeRanking").innerHTML =
-    tableHTML(["#", "اللاعب", "الأهداف", "التمريرات"], rows);
+    tableHTML(["الترتيب", "اللاعب", "القميص", "الأهداف", "التمريرات"], rows);
 }
 
 function renderPlayers() {
   const rows = players.map(p => `
     <tr>
       <td>${playerCell(p)}</td>
+      <td>${jerseyCell(p)}</td>
       <td>${num(p.goals)}</td>
       <td>${num(p.assists)}</td>
       <td>${num(p.appearances)}</td>
@@ -970,64 +841,49 @@ function renderPlayers() {
   `);
 
   document.getElementById("playersTable").innerHTML =
-    tableHTML(
-      ["اللاعب", "الأهداف", "التمريرات", "المشاركات", "التقييم", "الإجراءات"],
-      rows
-    );
+    tableHTML(["اللاعب", "القميص", "الأهداف", "التمريرات", "المشاركات", "التقييم", "الإجراءات"], rows);
 }
 
 function renderGoals() {
   const rows = sortedPlayers("goals").map((p, i) => `
-    <tr>
-      <td class="rank">${i + 1}</td>
-      <td>${playerCell(p)}</td>
-      <td><strong>${num(p.goals)}</strong></td>
-    </tr>
+    <tr><td class="rank">${i + 1}</td><td>${playerCell(p)}</td>
+    <td>${jerseyCell(p)}</td><td><strong>${num(p.goals)}</strong></td></tr>
   `);
 
   document.getElementById("goalsTable").innerHTML =
-    tableHTML(["الترتيب", "اللاعب", "الأهداف"], rows);
+    tableHTML(["الترتيب", "اللاعب", "القميص", "الأهداف"], rows);
 }
 
 function renderAssists() {
   const rows = sortedPlayers("assists").map((p, i) => `
-    <tr>
-      <td class="rank">${i + 1}</td>
-      <td>${playerCell(p)}</td>
-      <td><strong>${num(p.assists)}</strong></td>
-    </tr>
+    <tr><td class="rank">${i + 1}</td><td>${playerCell(p)}</td>
+    <td>${jerseyCell(p)}</td><td>${num(p.assists)}</td></tr>
   `);
 
   document.getElementById("assistsTable").innerHTML =
-    tableHTML(["الترتيب", "اللاعب", "التمريرات الحاسمة"], rows);
+    tableHTML(["الترتيب", "اللاعب", "القميص", "التمريرات الحاسمة"], rows);
 }
 
 function renderAppearances() {
   const rows = sortedPlayers("appearances").map((p, i) => `
-    <tr>
-      <td class="rank">${i + 1}</td>
-      <td>${playerCell(p)}</td>
-      <td>${num(p.appearances)}</td>
-    </tr>
+    <tr><td class="rank">${i + 1}</td><td>${playerCell(p)}</td>
+    <td>${jerseyCell(p)}</td><td>${num(p.appearances)}</td></tr>
   `);
 
   document.getElementById("appearancesTable").innerHTML =
-    tableHTML(["الترتيب", "اللاعب", "المشاركات"], rows);
+    tableHTML(["الترتيب", "اللاعب", "القميص", "المشاركات"], rows);
 }
 
 function renderRatings() {
   const rows = [...players]
     .sort((a, b) => num(b.rating) - num(a.rating))
     .map((p, i) => `
-      <tr>
-        <td class="rank">${i + 1}</td>
-        <td>${playerCell(p)}</td>
-        <td><strong>${num(p.rating).toFixed(1)} / 10</strong></td>
-      </tr>
+      <tr><td class="rank">${i + 1}</td><td>${playerCell(p)}</td>
+      <td>${jerseyCell(p)}</td><td><strong>${num(p.rating).toFixed(1)} / 10</strong></td></tr>
     `);
 
   document.getElementById("ratingsTable").innerHTML =
-    tableHTML(["الترتيب", "اللاعب", "التقييم"], rows);
+    tableHTML(["الترتيب", "اللاعب", "القميص", "التقييم"], rows);
 }
 
 function renderMatches() {
@@ -1064,42 +920,123 @@ function renderAll() {
   renderMatches();
 }
 
-document.getElementById("playerForm").addEventListener("submit", event => {
+/* اختيار الصورة وتصغيرها */
+document.getElementById("playerPhoto").addEventListener("change", async event => {
+  const file = event.target.files && event.target.files[0];
+  if (!file) return;
+
+  if (!file.type.startsWith("image/")) {
+    alert("يرجى اختيار ملف صورة.");
+    event.target.value = "";
+    return;
+  }
+
+  if (file.size > 15 * 1024 * 1024) {
+    alert("حجم الصورة كبير جداً. اختر صورة أصغر من 15 ميغابايت.");
+    event.target.value = "";
+    return;
+  }
+
+  const status = document.getElementById("photoStatus");
+  status.textContent = "جارٍ تجهيز الصورة...";
+
+  try {
+    const data = await resizeImage(file);
+    pendingPhoto = data;
+
+    const preview = document.getElementById("photoPreview");
+    preview.src = data;
+    preview.style.display = "block";
+
+    status.textContent = "تم اختيار الصورة بنجاح.";
+  } catch (error) {
+    pendingPhoto = "";
+    status.textContent = "تعذر تجهيز الصورة. جرّب صورة أخرى.";
+    alert("تعذر فتح الصورة. جرّب صورة أخرى.");
+  }
+});
+
+function resizeImage(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    reader.onerror = () => reject(new Error("تعذرت قراءة الصورة"));
+
+    reader.onload = () => {
+      const img = new Image();
+
+      img.onerror = () => reject(new Error("الصورة غير صالحة"));
+
+      img.onload = () => {
+        const maxSide = 500;
+        const scale = Math.min(1, maxSide / Math.max(img.width, img.height));
+
+        const canvas = document.createElement("canvas");
+        canvas.width = Math.max(1, Math.round(img.width * scale));
+        canvas.height = Math.max(1, Math.round(img.height * scale));
+
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+        resolve(canvas.toDataURL("image/jpeg", 0.75));
+      };
+
+      img.src = reader.result;
+    };
+
+    reader.readAsDataURL(file);
+  });
+}
+
+document.getElementById("playerForm").addEventListener("submit", async event => {
   event.preventDefault();
 
   const id = document.getElementById("playerId").value;
   const name = document.getElementById("playerName").value.trim();
+  const numberInput = document.getElementById("playerNumber").value;
+  const rating = Number(document.getElementById("playerRating").value);
 
   if (!name) {
-    alert("يرجى إدخال اسم اللاعب.");
+    alert("أدخل اسم اللاعب.");
     return;
   }
 
-  const rating = Number(document.getElementById("playerRating").value);
+  const number = Number(numberInput);
+
+  if (!Number.isInteger(number) || number < 0 || number > 99) {
+    alert("رقم القميص يجب أن يكون بين 0 و99.");
+    return;
+  }
 
   if (!Number.isFinite(rating) || rating < 0 || rating > 10) {
     alert("التقييم يجب أن يكون بين 0 و10.");
     return;
   }
 
+  const oldPlayer = players.find(p => p.id === id);
+
   const player = {
     id: id || uid(),
     name,
+    number,
     position: document.getElementById("playerPosition").value,
     goals: num(document.getElementById("playerGoals").value),
     assists: num(document.getElementById("playerAssists").value),
     appearances: num(document.getElementById("playerAppearances").value),
     rating,
-    photo: document.getElementById("playerPhoto").value.trim()
+    photo: pendingPhoto || (oldPlayer ? oldPlayer.photo : "")
   };
 
-  if (id) {
-    players = players.map(p => p.id === id ? player : p);
-  } else {
-    players.push(player);
+  const previousPlayers = players;
+  players = id
+    ? players.map(p => p.id === id ? player : p)
+    : [...players, player];
+
+  if (!saveData()) {
+    players = previousPlayers;
+    return;
   }
 
-  saveData();
   resetPlayerForm();
   renderAll();
   alert("تم حفظ بيانات اللاعب بنجاح.");
@@ -1109,14 +1046,31 @@ function editPlayer(id) {
   const p = players.find(player => player.id === id);
   if (!p) return;
 
+  currentPhoto = p.photo || "";
+  pendingPhoto = "";
+
   document.getElementById("playerId").value = p.id;
   document.getElementById("playerName").value = p.name;
+  document.getElementById("playerNumber").value = p.number ?? 0;
   document.getElementById("playerPosition").value = p.position || "مهاجم";
   document.getElementById("playerGoals").value = num(p.goals);
   document.getElementById("playerAssists").value = num(p.assists);
   document.getElementById("playerAppearances").value = num(p.appearances);
   document.getElementById("playerRating").value = num(p.rating);
-  document.getElementById("playerPhoto").value = p.photo || "";
+
+  document.getElementById("playerPhoto").value = "";
+
+  const preview = document.getElementById("photoPreview");
+  const status = document.getElementById("photoStatus");
+
+  if (currentPhoto) {
+    preview.src = currentPhoto;
+    preview.style.display = "block";
+    status.textContent = "الصورة الحالية محفوظة. اختر صورة أخرى إذا أردت تغييرها.";
+  } else {
+    preview.style.display = "none";
+    status.textContent = "لم يتم اختيار صورة بعد.";
+  }
 
   document.getElementById("playerFormTitle").textContent = "تعديل بيانات اللاعب";
   document.getElementById("savePlayerButton").textContent = "حفظ التعديلات";
@@ -1128,22 +1082,36 @@ function editPlayer(id) {
 function resetPlayerForm() {
   document.getElementById("playerForm").reset();
   document.getElementById("playerId").value = "";
+
+  pendingPhoto = "";
+  currentPhoto = "";
+
   document.getElementById("playerGoals").value = 0;
   document.getElementById("playerAssists").value = 0;
   document.getElementById("playerAppearances").value = 0;
+  document.getElementById("playerNumber").value = 0;
   document.getElementById("playerRating").value = 5;
+
+  document.getElementById("photoPreview").style.display = "none";
+  document.getElementById("photoPreview").removeAttribute("src");
+  document.getElementById("photoStatus").textContent = "لم يتم اختيار صورة بعد.";
+
   document.getElementById("playerFormTitle").textContent = "إضافة لاعب جديد";
   document.getElementById("savePlayerButton").textContent = "حفظ اللاعب";
 }
 
 function deletePlayer(id) {
   const p = players.find(player => player.id === id);
-  if (!p) return;
+  if (!p || !confirm("هل تريد حذف اللاعب " + p.name + "؟")) return;
 
-  if (!confirm("هل تريد حذف اللاعب " + p.name + "؟")) return;
-
+  const previousPlayers = players;
   players = players.filter(player => player.id !== id);
-  saveData();
+
+  if (!saveData()) {
+    players = previousPlayers;
+    return;
+  }
+
   renderAll();
 }
 
@@ -1151,47 +1119,63 @@ document.getElementById("matchForm").addEventListener("submit", event => {
   event.preventDefault();
 
   const opponent = document.getElementById("matchOpponent").value.trim();
-
   if (!opponent) {
-    alert("يرجى إدخال اسم الفريق المنافس.");
+    alert("أدخل اسم الفريق المنافس.");
     return;
   }
 
-  matches.push({
+  const previousMatches = matches;
+
+  matches = [...matches, {
     id: uid(),
     opponent,
     date: document.getElementById("matchDate").value,
     ourGoals: num(document.getElementById("matchOurGoals").value),
     theirGoals: num(document.getElementById("matchTheirGoals").value)
-  });
+  }];
 
-  saveData();
+  if (!saveData()) {
+    matches = previousMatches;
+    return;
+  }
+
   document.getElementById("matchForm").reset();
   document.getElementById("matchOurGoals").value = 0;
   document.getElementById("matchTheirGoals").value = 0;
-  renderAll();
 
+  renderAll();
   alert("تم تسجيل المباراة بنجاح.");
 });
 
 function deleteMatch(id) {
   if (!confirm("هل تريد حذف هذه المباراة؟")) return;
 
-  matches = matches.filter(match => match.id !== id);
-  saveData();
+  const previousMatches = matches;
+  matches = matches.filter(m => m.id !== id);
+
+  if (!saveData()) {
+    matches = previousMatches;
+    return;
+  }
+
   renderAll();
 }
 
 function clearAllData() {
-  const confirmation = confirm(
-    "تحذير: سيتم حذف جميع اللاعبين والمباريات المحفوظة على هذا المتصفح. هل أنت متأكد؟"
-  );
+  if (!confirm("سيتم حذف جميع اللاعبين والمباريات من هذا المتصفح. هل أنت متأكد؟")) return;
 
-  if (!confirmation) return;
+  const oldPlayers = players;
+  const oldMatches = matches;
 
   players = [];
   matches = [];
-  saveData();
+
+  if (!saveData()) {
+    players = oldPlayers;
+    matches = oldMatches;
+    return;
+  }
+
   resetPlayerForm();
   renderAll();
 }
@@ -1200,4 +1184,4 @@ renderAll();
 </script>
 
 </body>
-  </html>
+</html>
