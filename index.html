@@ -3,19 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eagles Club | إحصائيات الفريق</title>
+<title>Eagles Club | نادي النسور</title>
 
 <style>
 :root {
   --bg: #07111f;
-  --panel: #101e32;
-  --panel2: #172943;
-  --blue: #2388ff;
-  --light: #75bdff;
-  --text: #ffffff;
-  --muted: #a8b9d0;
-  --border: #293d58;
-  --red: #ff6262;
+  --panel: #101f33;
+  --panel2: #162a43;
+  --blue: #1688ff;
+  --light: #53b5ff;
+  --text: #f4f8ff;
+  --muted: #9aafc9;
+  --border: #243b57;
+  --green: #25d69a;
+  --red: #ff5d70;
 }
 
 * {
@@ -26,64 +27,103 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: Arial, sans-serif;
+  font-family: Arial, Tahoma, sans-serif;
 }
 
-header {
-  padding: 28px 16px;
-  text-align: center;
-  background: linear-gradient(135deg, #102e55, #07111f);
-  border-bottom: 2px solid var(--blue);
-}
-
-.logo {
-  font-size: 42px;
-}
-
-header h1 {
-  margin: 10px 0;
-  font-size: 29px;
-}
-
-header p {
-  color: var(--muted);
-  margin: 0;
-}
-
-.container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 18px;
-}
-
-nav {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
+button, input, select {
+  font: inherit;
 }
 
 button {
-  border: 0;
-  border-radius: 8px;
-  padding: 11px 15px;
-  background: var(--blue);
-  color: white;
-  font-weight: bold;
   cursor: pointer;
 }
 
-button:hover {
-  filter: brightness(1.15);
+header {
+  padding: 24px 16px;
+  background: linear-gradient(120deg, #102c4e, #07111f);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 55px;
+  height: 55px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #1688ff, #06417f);
+  display: grid;
+  place-items: center;
+  font-size: 30px;
+}
+
+.brand h1 {
+  font-size: 23px;
+  margin: 0 0 5px;
+  letter-spacing: 1px;
+}
+
+.brand p {
+  color: var(--muted);
+  font-size: 12px;
+  margin: 0;
+}
+
+.badge {
+  border: 1px solid #2465a0;
+  background: #102c4e;
+  color: var(--light);
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+nav {
+  max-width: 1100px;
+  margin: 18px auto 0;
+  padding: 0 12px 8px;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--blue) var(--panel);
 }
 
 nav button {
-  background: var(--panel2);
+  flex: 0 0 auto;
+  white-space: nowrap;
   border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--muted);
+  padding: 12px 17px;
+  border-radius: 11px;
+  transition: .2s;
 }
 
+nav button:hover,
 nav button.active {
   background: var(--blue);
+  border-color: var(--blue);
+  color: white;
+}
+
+main {
+  max-width: 1100px;
+  margin: 25px auto;
+  padding: 0 16px 40px;
 }
 
 .page {
@@ -94,198 +134,378 @@ nav button.active {
   display: block;
 }
 
-h2 {
-  color: var(--light);
-  margin-top: 0;
+.page-heading {
+  margin-bottom: 22px;
 }
 
-.panel {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  padding: 18px;
-  border-radius: 13px;
-  margin-bottom: 18px;
+.page-heading h2 {
+  font-size: 25px;
+  margin: 0 0 8px;
+}
+
+.page-heading p {
+  color: var(--muted);
+  margin: 0;
+  font-size: 14px;
 }
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-  margin-bottom: 20px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 25px;
 }
 
 .stat-card {
   background: var(--panel);
   border: 1px solid var(--border);
-  padding: 18px 10px;
-  text-align: center;
-  border-radius: 12px;
+  border-radius: 15px;
+  padding: 19px;
+  min-width: 0;
 }
 
-.stat-card strong {
-  display: block;
-  color: var(--light);
-  font-size: 28px;
+.stat-icon {
+  font-size: 23px;
+  margin-bottom: 12px;
+}
+
+.stat-label {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.stat-number {
+  font-size: 29px;
+  font-weight: bold;
   margin-top: 8px;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  padding: 20px;
+  margin-bottom: 22px;
+  min-width: 0;
+}
+
+.panel-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.panel-title h3 {
+  margin: 0;
+  font-size: 18px;
 }
 
 .top-scorer {
   display: flex;
   align-items: center;
-  gap: 20px;
-  background: linear-gradient(120deg, #153c6b, #101e32);
-  border: 1px solid #347bc0;
-  padding: 20px;
-  border-radius: 15px;
-  margin-bottom: 22px;
+  gap: 25px;
+  padding: 25px;
+  border-radius: 17px;
+  border: 1px solid #2469a8;
+  background: linear-gradient(120deg, #153f6b, #101f33 80%);
+  margin-bottom: 25px;
 }
 
 .top-scorer img {
-  width: 110px;
-  height: 110px;
+  width: 190px;
+  height: 190px;
+  flex-shrink: 0;
   border-radius: 50%;
   object-fit: cover;
   background: var(--panel2);
-  border: 3px solid var(--light);
+  border: 5px solid var(--light);
 }
 
-.top-scorer h3 {
-  font-size: 23px;
-  margin: 8px 0;
+.top-label {
+  color: #ffcf5c;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.top-scorer h2 {
+  font-size: 31px;
+  margin: 12px 0;
 }
 
 .top-scorer p {
   color: var(--muted);
+  margin: 8px 0 16px;
 }
 
-form {
+.goal-number {
+  display: inline-block;
+  background: #073b69;
+  color: #8bd0ff;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border-radius: 12px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 520px;
+}
+
+th, td {
+  padding: 15px 12px;
+  text-align: right;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  color: var(--light);
+  background: #13263d;
+  font-size: 13px;
+}
+
+td {
+  font-size: 14px;
+}
+
+tbody tr:hover {
+  background: #13263d;
+}
+
+.player-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 150px;
+}
+
+.player-cell img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--panel2);
+  border: 1px solid var(--border);
+}
+
+.position {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.rank {
+  color: #ffcf5c;
+  font-weight: bold;
+}
+
+.btn {
+  border: 0;
+  padding: 10px 14px;
+  border-radius: 9px;
+  color: white;
+  background: var(--blue);
+}
+
+.btn:hover {
+  filter: brightness(1.12);
+}
+
+.btn-secondary {
+  background: var(--panel2);
+  border: 1px solid var(--border);
+}
+
+.btn-danger {
+  background: #57212c;
+  color: #ff9eaa;
+}
+
+.btn-small {
+  padding: 7px 10px;
+  font-size: 12px;
+  margin: 2px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.form-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  gap: 15px;
 }
 
-label {
-  display: block;
-  color: var(--muted);
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field label {
   font-size: 13px;
-  margin-bottom: 6px;
+  color: var(--muted);
 }
 
-input, select {
+.field input,
+.field select {
   width: 100%;
   padding: 12px;
-  border-radius: 8px;
+  border-radius: 9px;
   border: 1px solid var(--border);
   background: #091626;
   color: white;
   outline: none;
 }
 
-input:focus, select:focus {
+.field input:focus,
+.field select:focus {
   border-color: var(--blue);
 }
 
-.full {
-  grid-column: 1 / -1;
-}
-
-.table-wrap {
-  overflow-x: auto;
-  margin-top: 12px;
-}
-
-table {
-  width: 100%;
-  min-width: 540px;
-  border-collapse: collapse;
-  text-align: center;
-  background: #0c192b;
-}
-
-th, td {
-  padding: 12px 9px;
-  border-bottom: 1px solid var(--border);
-}
-
-th {
-  background: #173c69;
-  color: white;
-}
-
-tr:hover td {
-  background: #142943;
-}
-
-.player-name {
-  font-weight: bold;
-}
-
-.badge {
-  color: var(--light);
-  font-weight: bold;
-}
-
-.small-btn {
-  padding: 7px 9px;
-  margin: 2px;
-  font-size: 12px;
-}
-
-.delete-btn {
-  background: #a8323e;
-}
-
-.edit-btn {
-  background: #245a90;
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
 }
 
 .empty {
   color: var(--muted);
   text-align: center;
-  padding: 24px;
+  padding: 28px 10px;
 }
 
-.search {
-  margin: 10px 0;
+.match-score {
+  color: var(--green);
+  font-size: 18px;
+  font-weight: bold;
 }
 
 footer {
-  text-align: center;
-  color: var(--muted);
-  padding: 25px 10px;
   border-top: 1px solid var(--border);
-  margin-top: 25px;
+  padding: 22px 12px;
+  color: var(--muted);
+  text-align: center;
+  font-size: 12px;
 }
 
-@media (max-width: 600px) {
-  .container {
-    padding: 12px;
+.notice {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+  margin-top: 14px;
+}
+
+@media (max-width: 700px) {
+  header {
+    padding: 18px 12px;
+  }
+
+  .brand h1 {
+    font-size: 18px;
+  }
+
+  .brand p {
+    font-size: 11px;
+  }
+
+  .logo {
+    width: 46px;
+    height: 46px;
+    font-size: 25px;
+  }
+
+  .badge {
+    font-size: 10px;
+    padding: 7px 9px;
+  }
+
+  nav {
+    margin-top: 15px;
+    gap: 7px;
+  }
+
+  nav button {
+    padding: 11px 14px;
+    font-size: 13px;
+  }
+
+  main {
+    margin-top: 20px;
+    padding: 0 12px 30px;
   }
 
   .stats-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
   }
 
-  form {
-    grid-template-columns: 1fr;
+  .stat-card {
+    padding: 15px;
   }
 
-  .full {
-    grid-column: auto;
+  .stat-number {
+    font-size: 25px;
   }
 
   .top-scorer {
-    gap: 12px;
-    padding: 14px;
+    gap: 14px;
+    padding: 16px;
   }
 
   .top-scorer img {
-    width: 85px;
-    height: 85px;
+    width: 125px;
+    height: 125px;
+    border-width: 3px;
   }
 
-  header h1 {
-    font-size: 24px;
+  .top-scorer h2 {
+    font-size: 22px;
+  }
+
+  .top-label {
+    font-size: 12px;
+  }
+
+  .goal-number {
+    font-size: 14px;
+    padding: 9px;
+  }
+
+  .panel {
+    padding: 14px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 380px) {
+  .top-scorer {
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .top-scorer img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .top-scorer h2 {
+    font-size: 19px;
   }
 }
 </style>
@@ -294,504 +514,594 @@ footer {
 <body>
 
 <header>
-  <div class="logo">🦅</div>
-  <h1>EAGLES CLUB</h1>
-  <p>النظام الرسمي لإحصائيات الفريق</p>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="logo">🦅</div>
+      <div>
+        <h1>EAGLES CLUB</h1>
+        <p>نادي النسور لكرة القدم</p>
+      </div>
+    </div>
+    <div class="badge">⚽ إحصائيات الفريق</div>
+  </div>
+
+  <nav>
+    <button class="active" data-page="home">الرئيسية</button>
+    <button data-page="players">اللاعبون</button>
+    <button data-page="goals">الأهداف</button>
+    <button data-page="assists">التمريرات</button>
+    <button data-page="appearances">المشاركات</button>
+    <button data-page="ratings">التقييمات</button>
+    <button data-page="matches">المباريات</button>
+    <button data-page="manage">إدارة الفريق</button>
+  </nav>
 </header>
 
-<main class="container">
+<main>
 
-<nav>
-  <button class="active" onclick="showPage('home',this)">الرئيسية</button>
-  <button onclick="showPage('players',this)">اللاعبون</button>
-  <button onclick="showPage('goals',this)">الهدافون</button>
-  <button onclick="showPage('assists',this)">صناعة الأهداف</button>
-  <button onclick="showPage('appearances',this)">المشاركات</button>
-  <button onclick="showPage('ratings',this)">التقييمات</button>
-  <button onclick="showPage('matches',this)">المباريات</button>
-</nav>
+  <!-- الصفحة الرئيسية -->
+  <section class="page active" id="home">
+    <div class="page-heading">
+      <h2>مرحباً بكم في Eagles Club</h2>
+      <p>كل إحصائيات الفريق في مكان واحد.</p>
+    </div>
 
-<section id="home" class="page active">
-  <h2>📊 لوحة الفريق</h2>
-
-  <div class="stats-grid">
-    <div class="stat-card">عدد اللاعبين<strong id="totalPlayers">0</strong></div>
-    <div class="stat-card">مجموع الأهداف<strong id="totalGoals">0</strong></div>
-    <div class="stat-card">صناعة الأهداف<strong id="totalAssists">0</strong></div>
-    <div class="stat-card">مجموع المشاركات<strong id="totalApps">0</strong></div>
-    <div class="stat-card">عدد المباريات المسجلة<strong id="totalMatches">0</strong></div>
-    <div class="stat-card">متوسط التقييم<strong id="averageRating">0</strong></div>
-  </div>
-
-  <h2>👑 الهداف الأول</h2>
-  <div id="topScorer"></div>
-
-  <div class="panel">
-    <h2>🏆 أفضل اللاعبين</h2>
-    <div id="homeRanking"></div>
-  </div>
-</section>
-
-<section id="players" class="page">
-  <h2>👥 إدارة اللاعبين</h2>
-
-  <div class="panel">
-    <h3 id="formTitle">إضافة لاعب جديد</h3>
-
-    <form id="playerForm">
-      <div>
-        <label for="playerName">اسم اللاعب</label>
-        <input id="playerName" required maxlength="70" placeholder="اسم اللاعب">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">👥</div>
+        <div class="stat-label">عدد اللاعبين</div>
+        <div class="stat-number" id="totalPlayers">0</div>
       </div>
 
-      <div>
-        <label for="playerPosition">مركز اللاعب</label>
-        <select id="playerPosition">
-          <option>حارس مرمى</option>
-          <option>مدافع</option>
-          <option>وسط</option>
-          <option>مهاجم</option>
-          <option>جناح</option>
-          <option>لاعب آخر</option>
-        </select>
+      <div class="stat-card">
+        <div class="stat-icon">⚽</div>
+        <div class="stat-label">مجموع الأهداف</div>
+        <div class="stat-number" id="totalGoals">0</div>
       </div>
 
-      <div>
-        <label for="playerGoals">عدد الأهداف</label>
-        <input id="playerGoals" type="number" min="0" value="0" required>
+      <div class="stat-card">
+        <div class="stat-icon">🎯</div>
+        <div class="stat-label">التمريرات الحاسمة</div>
+        <div class="stat-number" id="totalAssists">0</div>
       </div>
 
-      <div>
-        <label for="playerAssists">صناعة الأهداف</label>
-        <input id="playerAssists" type="number" min="0" value="0" required>
+      <div class="stat-card">
+        <div class="stat-icon">🏟️</div>
+        <div class="stat-label">المباريات المسجلة</div>
+        <div class="stat-number" id="totalMatches">0</div>
+      </div>
+    </div>
+
+    <div id="topScorer"></div>
+
+    <div class="panel">
+      <div class="panel-title">
+        <h3>🏆 ترتيب أفضل الهدافين</h3>
+        <button class="btn btn-secondary" onclick="showPage('goals')">
+          عرض الكل
+        </button>
+      </div>
+      <div id="homeRanking"></div>
+    </div>
+  </section>
+
+  <!-- صفحة اللاعبين -->
+  <section class="page" id="players">
+    <div class="page-heading">
+      <h2>👥 قائمة اللاعبين</h2>
+      <p>جميع لاعبي Eagles Club وإحصائياتهم.</p>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">
+        <h3>اللاعبون المسجلون</h3>
+        <button class="btn" onclick="showPage('manage')">
+          + إضافة لاعب
+        </button>
+      </div>
+      <div id="playersTable"></div>
+    </div>
+  </section>
+
+  <!-- صفحة الأهداف -->
+  <section class="page" id="goals">
+    <div class="page-heading">
+      <h2>⚽ ترتيب الهدافين</h2>
+      <p>ترتيب اللاعبين حسب عدد الأهداف.</p>
+    </div>
+
+    <div class="panel">
+      <div id="goalsTable"></div>
+    </div>
+  </section>
+
+  <!-- صفحة التمريرات -->
+  <section class="page" id="assists">
+    <div class="page-heading">
+      <h2>🎯 التمريرات الحاسمة</h2>
+      <p>ترتيب اللاعبين حسب عدد التمريرات.</p>
+    </div>
+
+    <div class="panel">
+      <div id="assistsTable"></div>
+    </div>
+  </section>
+
+  <!-- صفحة المشاركات -->
+  <section class="page" id="appearances">
+    <div class="page-heading">
+      <h2>🏟️ مشاركات اللاعبين</h2>
+      <p>عدد المباريات التي شارك فيها كل لاعب.</p>
+    </div>
+
+    <div class="panel">
+      <div id="appearancesTable"></div>
+    </div>
+  </section>
+
+  <!-- صفحة التقييمات -->
+  <section class="page" id="ratings">
+    <div class="page-heading">
+      <h2>⭐ تقييمات اللاعبين</h2>
+      <p>التقييم من 10، ويمكن تعديله من إدارة الفريق.</p>
+    </div>
+
+    <div class="panel">
+      <div id="ratingsTable"></div>
+    </div>
+  </section>
+
+  <!-- صفحة المباريات -->
+  <section class="page" id="matches">
+    <div class="page-heading">
+      <h2>🏆 سجل المباريات</h2>
+      <p>نتائج المباريات المسجلة للفريق.</p>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">
+        <h3>المباريات</h3>
+        <button class="btn" onclick="showPage('manage')">
+          + إضافة مباراة
+        </button>
+      </div>
+      <div id="matchesTable"></div>
+    </div>
+  </section>
+
+  <!-- إدارة الفريق -->
+  <section class="page" id="manage">
+    <div class="page-heading">
+      <h2>⚙️ إدارة الفريق</h2>
+      <p>إضافة اللاعبين وتعديل إحصائياتهم وتسجيل المباريات.</p>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">
+        <h3 id="playerFormTitle">إضافة لاعب جديد</h3>
       </div>
 
-      <div>
-        <label for="playerApps">عدد المشاركات</label>
-        <input id="playerApps" type="number" min="0" value="0" required>
+      <form id="playerForm">
+        <input type="hidden" id="playerId">
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="playerName">اسم اللاعب *</label>
+            <input id="playerName" required maxlength="60"
+                   placeholder="مثال: محمد علي">
+          </div>
+
+          <div class="field">
+            <label for="playerPosition">المركز</label>
+            <select id="playerPosition">
+              <option value="حارس مرمى">حارس مرمى</option>
+              <option value="مدافع">مدافع</option>
+              <option value="وسط">وسط</option>
+              <option value="مهاجم">مهاجم</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="playerGoals">الأهداف</label>
+            <input id="playerGoals" type="number" min="0" value="0" required>
+          </div>
+
+          <div class="field">
+            <label for="playerAssists">التمريرات الحاسمة</label>
+            <input id="playerAssists" type="number" min="0" value="0" required>
+          </div>
+
+          <div class="field">
+            <label for="playerAppearances">المشاركات</label>
+            <input id="playerAppearances" type="number" min="0" value="0" required>
+          </div>
+
+          <div class="field">
+            <label for="playerRating">التقييم من 10</label>
+            <input id="playerRating" type="number" min="0" max="10"
+                   step="0.1" value="5">
+          </div>
+
+          <div class="field" style="grid-column:1/-1">
+            <label for="playerPhoto">رابط صورة اللاعب</label>
+            <input id="playerPhoto" type="url"
+                   placeholder="https://example.com/player.jpg">
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn" type="submit" id="savePlayerButton">
+            حفظ اللاعب
+          </button>
+          <button class="btn btn-secondary" type="button"
+                  onclick="resetPlayerForm()">
+            إلغاء
+          </button>
+        </div>
+
+        <p class="notice">
+          ملاحظة: استخدم رابط صورة مباشر يبدأ بـ https:// حتى تظهر الصورة.
+          الهداف الأول يتغير تلقائياً حسب عدد الأهداف.
+        </p>
+      </form>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">
+        <h3>إضافة مباراة جديدة</h3>
       </div>
 
-      <div>
-        <label for="playerPhoto">رابط صورة اللاعب (اختياري)</label>
-        <input id="playerPhoto" type="url" placeholder="https://example.com/photo.jpg">
+      <form id="matchForm">
+        <div class="form-grid">
+          <div class="field">
+            <label for="matchOpponent">اسم الفريق المنافس *</label>
+            <input id="matchOpponent" required maxlength="60"
+                   placeholder="اسم الفريق">
+          </div>
+
+          <div class="field">
+            <label for="matchDate">تاريخ المباراة</label>
+            <input id="matchDate" type="date">
+          </div>
+
+          <div class="field">
+            <label for="matchOurGoals">أهداف Eagles Club</label>
+            <input id="matchOurGoals" type="number" min="0" value="0" required>
+          </div>
+
+          <div class="field">
+            <label for="matchTheirGoals">أهداف المنافس</label>
+            <input id="matchTheirGoals" type="number" min="0" value="0" required>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn" type="submit">حفظ المباراة</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">
+        <h3>إدارة البيانات</h3>
       </div>
 
-      <div class="full">
-        <button type="submit" id="savePlayerBtn">إضافة اللاعب</button>
-        <button type="button" id="cancelEditBtn" hidden onclick="cancelEdit()">إلغاء التعديل</button>
-      </div>
-    </form>
-  </div>
+      <p class="notice">
+        البيانات محفوظة محلياً على المتصفح الذي تستخدمه.
+        هذا الإصدار لا يزامن البيانات تلقائياً بين أجهزة مختلفة.
+      </p>
 
-  <div class="panel">
-    <h3>قائمة اللاعبين</h3>
-    <input class="search" id="playerSearch" placeholder="ابحث عن لاعب..." oninput="render()">
-    <div id="playersTable"></div>
-  </div>
-</section>
-
-<section id="goals" class="page">
-  <h2>⚽ جدول الهدافين</h2>
-  <div class="panel" id="goalsTable"></div>
-</section>
-
-<section id="assists" class="page">
-  <h2>🎯 جدول صانعي الأهداف</h2>
-  <div class="panel" id="assistsTable"></div>
-</section>
-
-<section id="appearances" class="page">
-  <h2>🏟️ جدول المشاركات</h2>
-  <div class="panel" id="appearancesTable"></div>
-</section>
-
-<section id="ratings" class="page">
-  <h2>⭐ تقييمات اللاعبين</h2>
-  <div class="panel" id="ratingsTable"></div>
-</section>
-
-<section id="matches" class="page">
-  <h2>🏆 سجل المباريات</h2>
-
-  <div class="panel">
-    <h3>إضافة مباراة</h3>
-    <form id="matchForm">
-      <div>
-        <label for="opponent">اسم الفريق المنافس</label>
-        <input id="opponent" required maxlength="70">
-      </div>
-
-      <div>
-        <label for="matchDate">تاريخ المباراة</label>
-        <input id="matchDate" type="date" required>
-      </div>
-
-      <div>
-        <label for="ourScore">أهداف Eagles Club</label>
-        <input id="ourScore" type="number" min="0" value="0" required>
-      </div>
-
-      <div>
-        <label for="theirScore">أهداف المنافس</label>
-        <input id="theirScore" type="number" min="0" value="0" required>
-      </div>
-
-      <div class="full">
-        <button type="submit">تسجيل المباراة</button>
-      </div>
-    </form>
-  </div>
-
-  <div class="panel">
-    <div id="matchesTable"></div>
-  </div>
-</section>
+      <button class="btn btn-danger" onclick="clearAllData()">
+        حذف جميع البيانات
+      </button>
+    </div>
+  </section>
 
 </main>
 
 <footer>
-  EAGLES CLUB © <span id="year"></span> — إحصائيات الفريق
+  EAGLES CLUB © 2026 — نادي النسور لكرة القدم 🦅
 </footer>
 
 <script>
-"use strict";
-
-const STORAGE_KEY = "eaglesClubV2";
+const STORAGE_KEY = "eaglesClubFinalV1";
 
 let players = [];
 let matches = [];
-let editingPlayerId = null;
 
-function loadData() {
-  try {
-    const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
-    players = Array.isArray(data.players) ? data.players : [];
-    matches = Array.isArray(data.matches) ? data.matches : [];
-  } catch (error) {
-    players = [];
-    matches = [];
-  }
+try {
+  players = JSON.parse(localStorage.getItem(STORAGE_KEY + "_players")) || [];
+  matches = JSON.parse(localStorage.getItem(STORAGE_KEY + "_matches")) || [];
+} catch (error) {
+  players = [];
+  matches = [];
 }
 
 function saveData() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify({
-    players,
-    matches
-  }));
+  localStorage.setItem(STORAGE_KEY + "_players", JSON.stringify(players));
+  localStorage.setItem(STORAGE_KEY + "_matches", JSON.stringify(matches));
 }
 
-function makeId() {
-  return Date.now().toString(36) +
-    Math.random().toString(36).slice(2, 9);
+function uid() {
+  return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
 }
 
-function safe(value) {
+function esc(value) {
   return String(value ?? "").replace(/[&<>"']/g, char => ({
     "&": "&amp;",
     "<": "&lt;",
     ">": "&gt;",
     '"': "&quot;",
     "'": "&#39;"
-  })[char]);
+  }[char]));
 }
 
-function number(value) {
+function num(value) {
   const n = Number(value);
-  return Number.isFinite(n) && n > 0 ? n : 0;
+  return Number.isFinite(n) ? Math.max(0, n) : 0;
 }
 
-function rating(player) {
-  const apps = number(player.appearances);
-  if (!apps) return 5;
-
-  const score = 5 +
-    ((number(player.goals) + number(player.assists)) / apps) * 2;
-
-  return Math.min(10, Math.max(1, score));
+function photoUrl(value) {
+  const url = String(value || "").trim();
+  if (/^https?:\/\//i.test(url)) return esc(url);
+  return "";
 }
 
-function showPage(id, button) {
+function playerPhoto(player, sizeClass = "") {
+  const url = photoUrl(player.photo);
+  const fallback = "https://placehold.co/200x200/162a43/ffffff?text=Player";
+
+  return `<img class="${sizeClass}" src="${url || fallback}"
+    alt="صورة ${esc(player.name)}"
+    onerror="this.onerror=null;this.src='${fallback}'">`;
+}
+
+function showPage(pageId) {
   document.querySelectorAll(".page").forEach(page => {
-    page.classList.toggle("active", page.id === id);
+    page.classList.toggle("active", page.id === pageId);
   });
 
-  document.querySelectorAll("nav button").forEach(btn => {
-    btn.classList.remove("active");
+  document.querySelectorAll("nav button").forEach(button => {
+    button.classList.toggle("active", button.dataset.page === pageId);
   });
 
-  if (button) button.classList.add("active");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  renderAll();
 }
 
-function buildTable(title, field, label) {
-  const sorted = [...players].sort(
-    (a, b) => number(b[field]) - number(a[field])
-  );
+document.querySelectorAll("nav button").forEach(button => {
+  button.addEventListener("click", () => showPage(button.dataset.page));
+});
 
-  if (!sorted.length) {
-    return '<p class="empty">لا يوجد لاعبون مسجلون حتى الآن.</p>';
-  }
-
+function playerCell(player) {
   return `
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>الترتيب</th>
-            <th>اسم اللاعب</th>
-            <th>المركز</th>
-            <th>${safe(label)}</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${sorted.map((p, i) => `
-            <tr>
-              <td>${i + 1}</td>
-              <td class="player-name">${safe(p.name)}</td>
-              <td>${safe(p.position || "غير محدد")}</td>
-              <td class="badge">${number(p[field])}</td>
-            </tr>
-          `).join("")}
-        </tbody>
-      </table>
-    </div>
-  `;
-}
-
-function buildRatingsTable() {
-  const sorted = [...players].sort(
-    (a, b) => rating(b) - rating(a)
-  );
-
-  if (!sorted.length) {
-    return '<p class="empty">لا يوجد لاعبون مسجلون حتى الآن.</p>';
-  }
-
-  return `
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>الترتيب</th>
-            <th>اللاعب</th>
-            <th>الأهداف</th>
-            <th>الصناعة</th>
-            <th>المشاركات</th>
-            <th>التقييم</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${sorted.map((p, i) => `
-            <tr>
-              <td>${i + 1}</td>
-              <td>${safe(p.name)}</td>
-              <td>${number(p.goals)}</td>
-              <td>${number(p.assists)}</td>
-              <td>${number(p.appearances)}</td>
-              <td class="badge">${rating(p).toFixed(1)}/10</td>
-            </tr>
-          `).join("")}
-        </tbody>
-      </table>
-    </div>
-  `;
-}
-
-function renderTopScorer() {
-  const sorted = [...players].sort(
-    (a, b) => number(b.goals) - number(a.goals)
-  );
-
-  const p = sorted[0];
-  const box = document.getElementById("topScorer");
-
-  if (!p) {
-    box.innerHTML = '<div class="panel empty">أضف اللاعبين لعرض الهداف الأول.</div>';
-    return;
-  }
-
-  const photo = /^https?:\/\//i.test(p.photo || "")
-    ? safe(p.photo)
-    : "";
-
-  box.innerHTML = `
-    <div class="top-scorer">
-      <img src="${photo}" alt="صورة ${safe(p.name)}"
-           onerror="this.style.display='none'">
+    <div class="player-cell">
+      ${playerPhoto(player)}
       <div>
-        <div>👑 الهداف الأول</div>
-        <h3>${safe(p.name)}</h3>
-        <p>${safe(p.position || "لاعب")}</p>
-        <strong>⚽ ${number(p.goals)} هدفًا</strong>
+        <strong>${esc(player.name)}</strong>
+        <div class="position">${esc(player.position || "لاعب")}</div>
       </div>
     </div>
   `;
 }
 
-function renderPlayersTable() {
-  const search = document.getElementById("playerSearch").value
-    .trim().toLowerCase();
+function emptyMessage(message) {
+  return `<div class="empty">${esc(message)}</div>`;
+}
 
-  const filtered = players.filter(p =>
-    String(p.name || "").toLowerCase().includes(search)
-  );
+function tableHTML(headers, rows) {
+  if (!rows.length) return emptyMessage("لا توجد بيانات حالياً.");
 
-  if (!filtered.length) {
-    document.getElementById("playersTable").innerHTML =
-      '<p class="empty">لا يوجد لاعبون مطابقون للبحث.</p>';
-    return;
-  }
-
-  document.getElementById("playersTable").innerHTML = `
+  return `
     <div class="table-wrap">
       <table>
-        <thead>
-          <tr>
-            <th>اللاعب</th>
-            <th>المركز</th>
-            <th>الأهداف</th>
-            <th>الصناعة</th>
-            <th>المشاركات</th>
-            <th>التقييم</th>
-            <th>الإجراءات</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${filtered.map(p => `
-            <tr>
-              <td>${safe(p.name)}</td>
-              <td>${safe(p.position || "غير محدد")}</td>
-              <td>${number(p.goals)}</td>
-              <td>${number(p.assists)}</td>
-              <td>${number(p.appearances)}</td>
-              <td>${rating(p).toFixed(1)}/10</td>
-              <td>
-                <button class="small-btn edit-btn"
-                  onclick="editPlayer('${safe(p.id)}')">تعديل</button>
-                <button class="small-btn delete-btn"
-                  onclick="deletePlayer('${safe(p.id)}')">حذف</button>
-              </td>
-            </tr>
-          `).join("")}
-        </tbody>
+        <thead><tr>${headers.map(h => `<th>${h}</th>`).join("")}</tr></thead>
+        <tbody>${rows.join("")}</tbody>
       </table>
     </div>
   `;
+}
+
+function sortedPlayers(key) {
+  return [...players].sort((a, b) => num(b[key]) - num(a[key]));
+}
+
+function renderStats() {
+  document.getElementById("totalPlayers").textContent = players.length;
+  document.getElementById("totalGoals").textContent =
+    players.reduce((sum, p) => sum + num(p.goals), 0);
+  document.getElementById("totalAssists").textContent =
+    players.reduce((sum, p) => sum + num(p.assists), 0);
+  document.getElementById("totalMatches").textContent = matches.length;
+}
+
+function renderTopScorer() {
+  const box = document.getElementById("topScorer");
+  const sorted = sortedPlayers("goals");
+  const player = sorted[0];
+
+  if (!player) {
+    box.innerHTML = emptyMessage("أضف اللاعبين لعرض صورة الهداف الأول.");
+    return;
+  }
+
+  box.innerHTML = `
+    <div class="top-scorer">
+      ${playerPhoto(player)}
+      <div>
+        <div class="top-label">👑 الهداف الأول</div>
+        <h2>${esc(player.name)}</h2>
+        <p>${esc(player.position || "لاعب")}</p>
+        <div class="goal-number">⚽ ${num(player.goals)} هدف</div>
+      </div>
+    </div>
+  `;
+}
+
+function renderHomeRanking() {
+  const rows = sortedPlayers("goals").slice(0, 5).map((p, i) => `
+    <tr>
+      <td class="rank">${i + 1}</td>
+      <td>${playerCell(p)}</td>
+      <td>${num(p.goals)}</td>
+      <td>${num(p.assists)}</td>
+    </tr>
+  `);
+
+  document.getElementById("homeRanking").innerHTML =
+    tableHTML(["#", "اللاعب", "الأهداف", "التمريرات"], rows);
+}
+
+function renderPlayers() {
+  const rows = players.map(p => `
+    <tr>
+      <td>${playerCell(p)}</td>
+      <td>${num(p.goals)}</td>
+      <td>${num(p.assists)}</td>
+      <td>${num(p.appearances)}</td>
+      <td>${num(p.rating).toFixed(1)}</td>
+      <td>
+        <div class="actions">
+          <button class="btn btn-small" onclick="editPlayer('${p.id}')">تعديل</button>
+          <button class="btn btn-danger btn-small" onclick="deletePlayer('${p.id}')">حذف</button>
+        </div>
+      </td>
+    </tr>
+  `);
+
+  document.getElementById("playersTable").innerHTML =
+    tableHTML(
+      ["اللاعب", "الأهداف", "التمريرات", "المشاركات", "التقييم", "الإجراءات"],
+      rows
+    );
+}
+
+function renderGoals() {
+  const rows = sortedPlayers("goals").map((p, i) => `
+    <tr>
+      <td class="rank">${i + 1}</td>
+      <td>${playerCell(p)}</td>
+      <td><strong>${num(p.goals)}</strong></td>
+    </tr>
+  `);
+
+  document.getElementById("goalsTable").innerHTML =
+    tableHTML(["الترتيب", "اللاعب", "الأهداف"], rows);
+}
+
+function renderAssists() {
+  const rows = sortedPlayers("assists").map((p, i) => `
+    <tr>
+      <td class="rank">${i + 1}</td>
+      <td>${playerCell(p)}</td>
+      <td><strong>${num(p.assists)}</strong></td>
+    </tr>
+  `);
+
+  document.getElementById("assistsTable").innerHTML =
+    tableHTML(["الترتيب", "اللاعب", "التمريرات الحاسمة"], rows);
+}
+
+function renderAppearances() {
+  const rows = sortedPlayers("appearances").map((p, i) => `
+    <tr>
+      <td class="rank">${i + 1}</td>
+      <td>${playerCell(p)}</td>
+      <td>${num(p.appearances)}</td>
+    </tr>
+  `);
+
+  document.getElementById("appearancesTable").innerHTML =
+    tableHTML(["الترتيب", "اللاعب", "المشاركات"], rows);
+}
+
+function renderRatings() {
+  const rows = [...players]
+    .sort((a, b) => num(b.rating) - num(a.rating))
+    .map((p, i) => `
+      <tr>
+        <td class="rank">${i + 1}</td>
+        <td>${playerCell(p)}</td>
+        <td><strong>${num(p.rating).toFixed(1)} / 10</strong></td>
+      </tr>
+    `);
+
+  document.getElementById("ratingsTable").innerHTML =
+    tableHTML(["الترتيب", "اللاعب", "التقييم"], rows);
 }
 
 function renderMatches() {
-  const box = document.getElementById("matchesTable");
-
-  if (!matches.length) {
-    box.innerHTML = '<p class="empty">لم تُسجّل أي مباراة بعد.</p>';
-    return;
-  }
-
-  const sorted = [...matches].sort(
-    (a, b) => String(b.date).localeCompare(String(a.date))
+  const ordered = [...matches].sort((a, b) =>
+    String(b.date || "").localeCompare(String(a.date || ""))
   );
 
-  box.innerHTML = `
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>التاريخ</th>
-            <th>Eagles Club</th>
-            <th>النتيجة</th>
-            <th>الفريق المنافس</th>
-            <th>إجراء</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${sorted.map(m => `
-            <tr>
-              <td>${safe(m.date)}</td>
-              <td>Eagles Club</td>
-              <td class="badge">${number(m.ourScore)} - ${number(m.theirScore)}</td>
-              <td>${safe(m.opponent)}</td>
-              <td>
-                <button class="small-btn delete-btn"
-                  onclick="deleteMatch('${safe(m.id)}')">حذف</button>
-              </td>
-            </tr>
-          `).join("")}
-        </tbody>
-      </table>
-    </div>
-  `;
+  const rows = ordered.map(m => `
+    <tr>
+      <td>${esc(m.date || "غير محدد")}</td>
+      <td>Eagles Club</td>
+      <td>${esc(m.opponent)}</td>
+      <td class="match-score">${num(m.ourGoals)} - ${num(m.theirGoals)}</td>
+      <td>
+        <button class="btn btn-danger btn-small"
+          onclick="deleteMatch('${m.id}')">حذف</button>
+      </td>
+    </tr>
+  `);
+
+  document.getElementById("matchesTable").innerHTML =
+    tableHTML(["التاريخ", "الفريق", "المنافس", "النتيجة", "الإجراء"], rows);
 }
 
-function render() {
-  const totalGoals = players.reduce((sum, p) => sum + number(p.goals), 0);
-  const totalAssists = players.reduce((sum, p) => sum + number(p.assists), 0);
-  const totalApps = players.reduce((sum, p) => sum + number(p.appearances), 0);
-  const average = players.length
-    ? players.reduce((sum, p) => sum + rating(p), 0) / players.length
-    : 0;
-
-  document.getElementById("totalPlayers").textContent = players.length;
-  document.getElementById("totalGoals").textContent = totalGoals;
-  document.getElementById("totalAssists").textContent = totalAssists;
-  document.getElementById("totalApps").textContent = totalApps;
-  document.getElementById("totalMatches").textContent = matches.length;
-  document.getElementById("averageRating").textContent = average.toFixed(1);
-
-  document.getElementById("goalsTable").innerHTML =
-    buildTable("الهدافون", "goals", "الأهداف");
-
-  document.getElementById("assistsTable").innerHTML =
-    buildTable("صناعة الأهداف", "assists", "الصناعة");
-
-  document.getElementById("appearancesTable").innerHTML =
-    buildTable("المشاركات", "appearances", "المباريات");
-
-  document.getElementById("ratingsTable").innerHTML =
-    buildRatingsTable();
-
-  const ranking = [...players]
-    .sort((a, b) => number(b.goals) - number(a.goals))
-    .slice(0, 5);
-
-  document.getElementById("homeRanking").innerHTML = ranking.length
-    ? `<div class="table-wrap"><table>
-        <thead><tr><th>الترتيب</th><th>اللاعب</th><th>الأهداف</th></tr></thead>
-        <tbody>${ranking.map((p, i) => `
-          <tr><td>${i + 1}</td><td>${safe(p.name)}</td>
-          <td>${number(p.goals)}</td></tr>
-        `).join("")}</tbody>
-      </table></div>`
-    : '<p class="empty">أضف اللاعبين لعرض الترتيب.</p>';
-
+function renderAll() {
+  renderStats();
   renderTopScorer();
-  renderPlayersTable();
+  renderHomeRanking();
+  renderPlayers();
+  renderGoals();
+  renderAssists();
+  renderAppearances();
+  renderRatings();
   renderMatches();
 }
 
-document.getElementById("playerForm").addEventListener("submit", function(event) {
+document.getElementById("playerForm").addEventListener("submit", event => {
   event.preventDefault();
 
+  const id = document.getElementById("playerId").value;
   const name = document.getElementById("playerName").value.trim();
-  if (!name) return;
+
+  if (!name) {
+    alert("يرجى إدخال اسم اللاعب.");
+    return;
+  }
+
+  const rating = Number(document.getElementById("playerRating").value);
+
+  if (!Number.isFinite(rating) || rating < 0 || rating > 10) {
+    alert("التقييم يجب أن يكون بين 0 و10.");
+    return;
+  }
 
   const player = {
-    id: editingPlayerId || makeId(),
+    id: id || uid(),
     name,
     position: document.getElementById("playerPosition").value,
-    goals: number(document.getElementById("playerGoals").value),
-    assists: number(document.getElementById("playerAssists").value),
-    appearances: number(document.getElementById("playerApps").value),
+    goals: num(document.getElementById("playerGoals").value),
+    assists: num(document.getElementById("playerAssists").value),
+    appearances: num(document.getElementById("playerAppearances").value),
+    rating,
     photo: document.getElementById("playerPhoto").value.trim()
   };
 
-  if (editingPlayerId) {
-    players = players.map(p => p.id === editingPlayerId ? player : p);
+  if (id) {
+    players = players.map(p => p.id === id ? player : p);
   } else {
     players.push(player);
   }
 
   saveData();
-  cancelEdit();
-  render();
+  resetPlayerForm();
+  renderAll();
   alert("تم حفظ بيانات اللاعب بنجاح.");
 });
 
@@ -799,75 +1109,94 @@ function editPlayer(id) {
   const p = players.find(player => player.id === id);
   if (!p) return;
 
-  editingPlayerId = id;
-
-  document.getElementById("playerName").value = p.name || "";
-  document.getElementById("playerPosition").value = p.position || "لاعب آخر";
-  document.getElementById("playerGoals").value = number(p.goals);
-  document.getElementById("playerAssists").value = number(p.assists);
-  document.getElementById("playerApps").value = number(p.appearances);
+  document.getElementById("playerId").value = p.id;
+  document.getElementById("playerName").value = p.name;
+  document.getElementById("playerPosition").value = p.position || "مهاجم";
+  document.getElementById("playerGoals").value = num(p.goals);
+  document.getElementById("playerAssists").value = num(p.assists);
+  document.getElementById("playerAppearances").value = num(p.appearances);
+  document.getElementById("playerRating").value = num(p.rating);
   document.getElementById("playerPhoto").value = p.photo || "";
 
-  document.getElementById("formTitle").textContent = "تعديل بيانات اللاعب";
-  document.getElementById("savePlayerBtn").textContent = "حفظ التعديلات";
-  document.getElementById("cancelEditBtn").hidden = false;
+  document.getElementById("playerFormTitle").textContent = "تعديل بيانات اللاعب";
+  document.getElementById("savePlayerButton").textContent = "حفظ التعديلات";
 
-  showPage("players", document.querySelectorAll("nav button")[1]);
+  showPage("manage");
   document.getElementById("playerName").focus();
 }
 
-function cancelEdit() {
-  editingPlayerId = null;
+function resetPlayerForm() {
   document.getElementById("playerForm").reset();
+  document.getElementById("playerId").value = "";
   document.getElementById("playerGoals").value = 0;
   document.getElementById("playerAssists").value = 0;
-  document.getElementById("playerApps").value = 0;
-  document.getElementById("formTitle").textContent = "إضافة لاعب جديد";
-  document.getElementById("savePlayerBtn").textContent = "إضافة اللاعب";
-  document.getElementById("cancelEditBtn").hidden = true;
+  document.getElementById("playerAppearances").value = 0;
+  document.getElementById("playerRating").value = 5;
+  document.getElementById("playerFormTitle").textContent = "إضافة لاعب جديد";
+  document.getElementById("savePlayerButton").textContent = "حفظ اللاعب";
 }
 
 function deletePlayer(id) {
   const p = players.find(player => player.id === id);
   if (!p) return;
 
-  if (!confirm("هل أنت متأكد من حذف اللاعب " + p.name + "؟")) return;
+  if (!confirm("هل تريد حذف اللاعب " + p.name + "؟")) return;
 
   players = players.filter(player => player.id !== id);
   saveData();
-  render();
+  renderAll();
 }
 
-document.getElementById("matchForm").addEventListener("submit", function(event) {
+document.getElementById("matchForm").addEventListener("submit", event => {
   event.preventDefault();
 
+  const opponent = document.getElementById("matchOpponent").value.trim();
+
+  if (!opponent) {
+    alert("يرجى إدخال اسم الفريق المنافس.");
+    return;
+  }
+
   matches.push({
-    id: makeId(),
-    opponent: document.getElementById("opponent").value.trim(),
+    id: uid(),
+    opponent,
     date: document.getElementById("matchDate").value,
-    ourScore: number(document.getElementById("ourScore").value),
-    theirScore: number(document.getElementById("theirScore").value)
+    ourGoals: num(document.getElementById("matchOurGoals").value),
+    theirGoals: num(document.getElementById("matchTheirGoals").value)
   });
 
   saveData();
-  this.reset();
-  document.getElementById("ourScore").value = 0;
-  document.getElementById("theirScore").value = 0;
-  render();
+  document.getElementById("matchForm").reset();
+  document.getElementById("matchOurGoals").value = 0;
+  document.getElementById("matchTheirGoals").value = 0;
+  renderAll();
+
   alert("تم تسجيل المباراة بنجاح.");
 });
 
 function deleteMatch(id) {
   if (!confirm("هل تريد حذف هذه المباراة؟")) return;
 
-  matches = matches.filter(m => m.id !== id);
+  matches = matches.filter(match => match.id !== id);
   saveData();
-  render();
+  renderAll();
 }
 
-document.getElementById("year").textContent = new Date().getFullYear();
-loadData();
-render();
+function clearAllData() {
+  const confirmation = confirm(
+    "تحذير: سيتم حذف جميع اللاعبين والمباريات المحفوظة على هذا المتصفح. هل أنت متأكد؟"
+  );
+
+  if (!confirmation) return;
+
+  players = [];
+  matches = [];
+  saveData();
+  resetPlayerForm();
+  renderAll();
+}
+
+renderAll();
 </script>
 
 </body>
